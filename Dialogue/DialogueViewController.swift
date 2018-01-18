@@ -1,6 +1,6 @@
 //
-//  ChatViewController.swift
-//  Chat
+//  DialogueViewController.swift
+//  Dialogue
 //
 //  Created by Maciek on 18.01.2018.
 //  Copyright © 2018 Stanwood. All rights reserved.
@@ -8,30 +8,29 @@
 
 import UIKit
 
-internal protocol InternalChatViewControllerDataSource {
-    
+internal protocol InternalDialogueViewControllerDataSource: class {
 }
 
-public protocol ChatViewControllerDelegate {
-    func didSend(_ message: String)
+public protocol DialogueViewControllerDelegate: class {
+    func didReceive(_ message: String)
 }
 
-internal protocol InternalChatViewControllerDelegate: ChatViewControllerDelegate {
+internal protocol InternalDialogueViewControllerDelegate: DialogueViewControllerDelegate {
     func didReply(with message: String)
 }
 
-public class ChatViewController: UIViewController {
-    static func loadFromStoryboard() -> ChatViewController {
-        return UIStoryboard(name: "Chat", bundle: Bundle(for: ChatViewController.self))
-            .instantiateInitialViewController() as! ChatViewController
+public class DialogueViewController: UIViewController {
+    static func loadFromStoryboard() -> DialogueViewController {
+        return UIStoryboard(name: "Dialogue", bundle: Bundle(for: DialogueViewController.self))
+            .instantiateInitialViewController() as! DialogueViewController
     }
     
     @IBOutlet private weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var textField: UITextField!
     
-    var dataSource: InternalChatViewControllerDataSource?
-    var delegate: InternalChatViewControllerDelegate?
+    weak var dataSource: InternalDialogueViewControllerDataSource?
+    weak var delegate: InternalDialogueViewControllerDelegate?
     
     private var keyboardHandler: KeyboardHandler!
     
@@ -57,6 +56,6 @@ public class ChatViewController: UIViewController {
     }
     
     private func send(_ message: String) {
-        delegate?.didSend(message)
+        delegate?.didReceive(message)
     }
 }

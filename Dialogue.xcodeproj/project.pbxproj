@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE2697E8200FC1FE001CCA25 /* Chat.h in Headers */ = {isa = PBXBuildFile; fileRef = AE2697E6200FC1FE001CCA25 /* Chat.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AE2697EF201097A7001CCA25 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697EE201097A7001CCA25 /* ChatViewController.swift */; };
-		AE2697F12010996C001CCA25 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2697F02010996C001CCA25 /* Chat.storyboard */; };
-		AE2697F92010A029001CCA25 /* ChatViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697F82010A029001CCA25 /* ChatViewControllerTests.swift */; };
-		AE2697FB2010A029001CCA25 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; };
-		AED706D02010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift */; };
-		AED706D22010AB8300E1E565 /* ChatWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* ChatWireframe.swift */; };
+		AE2697E8200FC1FE001CCA25 /* Dialogue.h in Headers */ = {isa = PBXBuildFile; fileRef = AE2697E6200FC1FE001CCA25 /* Dialogue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697EE201097A7001CCA25 /* DialogueViewController.swift */; };
+		AE2697F12010996C001CCA25 /* Dialogue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2697F02010996C001CCA25 /* Dialogue.storyboard */; };
+		AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */; };
+		AE2697FB2010A029001CCA25 /* Dialogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; };
+		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
+		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
 		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +28,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE2697E3200FC1FE001CCA25 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE2697E6200FC1FE001CCA25 /* Chat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
+		AE2697E3200FC1FE001CCA25 /* Dialogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dialogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2697E6200FC1FE001CCA25 /* Dialogue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dialogue.h; sourceTree = "<group>"; };
 		AE2697E7200FC1FE001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE2697EE201097A7001CCA25 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		AE2697F02010996C001CCA25 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
-		AE2697F62010A029001CCA25 /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE2697F82010A029001CCA25 /* ChatViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewControllerTests.swift; sourceTree = "<group>"; };
+		AE2697EE201097A7001CCA25 /* DialogueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewController.swift; sourceTree = "<group>"; };
+		AE2697F02010996C001CCA25 /* Dialogue.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dialogue.storyboard; sourceTree = "<group>"; };
+		AE2697F62010A029001CCA25 /* DialogueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DialogueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewControllerTests.swift; sourceTree = "<group>"; };
 		AE2697FA2010A029001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AED706CF2010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalChatViewControllerConfiguration.swift; sourceTree = "<group>"; };
-		AED706D12010AB8300E1E565 /* ChatWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWireframe.swift; sourceTree = "<group>"; };
+		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
+		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
 		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2697FB2010A029001CCA25 /* Chat.framework in Frameworks */,
+				AE2697FB2010A029001CCA25 /* Dialogue.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,8 +63,8 @@
 		AE2697D9200FC1FE001CCA25 = {
 			isa = PBXGroup;
 			children = (
-				AE2697E5200FC1FE001CCA25 /* Chat */,
-				AE2697F72010A029001CCA25 /* ChatTests */,
+				AE2697E5200FC1FE001CCA25 /* Dialogue */,
+				AE2697F72010A029001CCA25 /* DialogueTests */,
 				AE2697E4200FC1FE001CCA25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,33 +72,33 @@
 		AE2697E4200FC1FE001CCA25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AE2697E3200FC1FE001CCA25 /* Chat.framework */,
-				AE2697F62010A029001CCA25 /* ChatTests.xctest */,
+				AE2697E3200FC1FE001CCA25 /* Dialogue.framework */,
+				AE2697F62010A029001CCA25 /* DialogueTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AE2697E5200FC1FE001CCA25 /* Chat */ = {
+		AE2697E5200FC1FE001CCA25 /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
 				AED706D32010BACE00E1E565 /* Utilities */,
-				AE2697E6200FC1FE001CCA25 /* Chat.h */,
+				AE2697E6200FC1FE001CCA25 /* Dialogue.h */,
 				AE2697E7200FC1FE001CCA25 /* Info.plist */,
-				AE2697EE201097A7001CCA25 /* ChatViewController.swift */,
-				AE2697F02010996C001CCA25 /* Chat.storyboard */,
-				AED706CF2010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift */,
-				AED706D12010AB8300E1E565 /* ChatWireframe.swift */,
+				AE2697EE201097A7001CCA25 /* DialogueViewController.swift */,
+				AE2697F02010996C001CCA25 /* Dialogue.storyboard */,
+				AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */,
+				AED706D12010AB8300E1E565 /* DialogueWireframe.swift */,
 			);
-			path = Chat;
+			path = Dialogue;
 			sourceTree = "<group>";
 		};
-		AE2697F72010A029001CCA25 /* ChatTests */ = {
+		AE2697F72010A029001CCA25 /* DialogueTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE2697F82010A029001CCA25 /* ChatViewControllerTests.swift */,
+				AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */,
 				AE2697FA2010A029001CCA25 /* Info.plist */,
 			);
-			path = ChatTests;
+			path = DialogueTests;
 			sourceTree = "<group>";
 		};
 		AED706D32010BACE00E1E565 /* Utilities */ = {
@@ -116,16 +116,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2697E8200FC1FE001CCA25 /* Chat.h in Headers */,
+				AE2697E8200FC1FE001CCA25 /* Dialogue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		AE2697E2200FC1FE001CCA25 /* Chat */ = {
+		AE2697E2200FC1FE001CCA25 /* Dialogue */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE2697EB200FC1FE001CCA25 /* Build configuration list for PBXNativeTarget "Chat" */;
+			buildConfigurationList = AE2697EB200FC1FE001CCA25 /* Build configuration list for PBXNativeTarget "Dialogue" */;
 			buildPhases = (
 				AE2697DE200FC1FE001CCA25 /* Sources */,
 				AE2697DF200FC1FE001CCA25 /* Frameworks */,
@@ -136,14 +136,14 @@
 			);
 			dependencies = (
 			);
-			name = Chat;
+			name = Dialogue;
 			productName = Chat;
-			productReference = AE2697E3200FC1FE001CCA25 /* Chat.framework */;
+			productReference = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		AE2697F52010A029001CCA25 /* ChatTests */ = {
+		AE2697F52010A029001CCA25 /* DialogueTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AE2697FE2010A029001CCA25 /* Build configuration list for PBXNativeTarget "ChatTests" */;
+			buildConfigurationList = AE2697FE2010A029001CCA25 /* Build configuration list for PBXNativeTarget "DialogueTests" */;
 			buildPhases = (
 				AE2697F22010A029001CCA25 /* Sources */,
 				AE2697F32010A029001CCA25 /* Frameworks */,
@@ -154,9 +154,9 @@
 			dependencies = (
 				AE2697FD2010A029001CCA25 /* PBXTargetDependency */,
 			);
-			name = ChatTests;
+			name = DialogueTests;
 			productName = ChatTests;
-			productReference = AE2697F62010A029001CCA25 /* ChatTests.xctest */;
+			productReference = AE2697F62010A029001CCA25 /* DialogueTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -180,20 +180,21 @@
 					};
 				};
 			};
-			buildConfigurationList = AE2697DD200FC1FE001CCA25 /* Build configuration list for PBXProject "Chat" */;
+			buildConfigurationList = AE2697DD200FC1FE001CCA25 /* Build configuration list for PBXProject "Dialogue" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = AE2697D9200FC1FE001CCA25;
 			productRefGroup = AE2697E4200FC1FE001CCA25 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AE2697E2200FC1FE001CCA25 /* Chat */,
-				AE2697F52010A029001CCA25 /* ChatTests */,
+				AE2697E2200FC1FE001CCA25 /* Dialogue */,
+				AE2697F52010A029001CCA25 /* DialogueTests */,
 			);
 		};
 /* End PBXProject section */
@@ -203,7 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2697F12010996C001CCA25 /* Chat.storyboard in Resources */,
+				AE2697F12010996C001CCA25 /* Dialogue.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +222,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AED706D02010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift in Sources */,
-				AE2697EF201097A7001CCA25 /* ChatViewController.swift in Sources */,
-				AED706D22010AB8300E1E565 /* ChatWireframe.swift in Sources */,
+				AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */,
+				AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */,
+				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE2697F92010A029001CCA25 /* ChatViewControllerTests.swift in Sources */,
+				AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +242,7 @@
 /* Begin PBXTargetDependency section */
 		AE2697FD2010A029001CCA25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AE2697E2200FC1FE001CCA25 /* Chat */;
+			target = AE2697E2200FC1FE001CCA25 /* Dialogue */;
 			targetProxy = AE2697FC2010A029001CCA25 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -371,10 +372,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Chat/Info.plist;
+				INFOPLIST_FILE = Dialogue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.Chat;
+				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.Dialogue;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -394,10 +395,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Chat/Info.plist;
+				INFOPLIST_FILE = Dialogue/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.Chat;
+				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.Dialogue;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -410,9 +411,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E695UC6Q3Q;
-				INFOPLIST_FILE = ChatTests/Info.plist;
+				INFOPLIST_FILE = DialogueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.ChatTests;
+				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.DialogueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -424,9 +425,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E695UC6Q3Q;
-				INFOPLIST_FILE = ChatTests/Info.plist;
+				INFOPLIST_FILE = DialogueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.ChatTests;
+				PRODUCT_BUNDLE_IDENTIFIER = stanwood.de.DialogueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -436,7 +437,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AE2697DD200FC1FE001CCA25 /* Build configuration list for PBXProject "Chat" */ = {
+		AE2697DD200FC1FE001CCA25 /* Build configuration list for PBXProject "Dialogue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE2697E9200FC1FE001CCA25 /* Debug */,
@@ -445,7 +446,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE2697EB200FC1FE001CCA25 /* Build configuration list for PBXNativeTarget "Chat" */ = {
+		AE2697EB200FC1FE001CCA25 /* Build configuration list for PBXNativeTarget "Dialogue" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE2697EC200FC1FE001CCA25 /* Debug */,
@@ -454,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE2697FE2010A029001CCA25 /* Build configuration list for PBXNativeTarget "ChatTests" */ = {
+		AE2697FE2010A029001CCA25 /* Build configuration list for PBXNativeTarget "DialogueTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE2697FF2010A029001CCA25 /* Debug */,
