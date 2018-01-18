@@ -31,8 +31,16 @@ extension InternalDialogueViewControllerConfiguration: InternalDialogueViewContr
     func messageCellViewModel(at index: Int) -> MessageCellViewModel {
         let message = messages[index]
         
+        var text = ""
+        switch message {
+        case let .received(_text):
+            text = _text
+        case let .replied(_text):
+            text = _text
+        }
+        
         return MessageCellViewModel(
-            text: "\(message)",
+            text: text,
             sender: MessageCellViewModel.MessageSender.sender(for: message)
         )
     }

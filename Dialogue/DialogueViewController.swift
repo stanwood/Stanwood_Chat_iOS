@@ -29,7 +29,7 @@ public class DialogueViewController: UIViewController {
     
     @IBOutlet private weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var textField: UITextField!
+    @IBOutlet private weak var textView: UITextView!
     
     var dataSource: InternalDialogueViewControllerDataSource?
     var delegate: InternalDialogueViewControllerDelegate?
@@ -37,11 +37,9 @@ public class DialogueViewController: UIViewController {
     private var keyboardHandler: KeyboardHandler!
     
     @IBAction private func sendDidTap() {
-        guard let message = textField.text, message != "" else { return }
+        guard let message = textView.text, message != "" else { return }
         
         send(message)
-        
-        textField.text = nil
     }
     
     override public func viewDidLoad() {
@@ -66,6 +64,8 @@ public class DialogueViewController: UIViewController {
         delegate?.didReceive(message)
         
         reloadTableView()
+        
+        textView.text = nil
     }
     
     private func reloadTableView() {
@@ -102,5 +102,24 @@ extension DialogueViewController: UITableViewDataSource {
         cell.prepare(with: dataSource.messageCellViewModel(at: indexPath.row))
         
         return cell
+    }
+}
+
+extension DialogueViewController: UITextViewDelegate {
+    public func textView(
+        _ textView: UITextView,
+        shouldChangeTextIn range: NSRange,
+        replacementText text: String
+        ) -> Bool {
+        
+        if text == "\n" {
+            guard let message = textView.text, message != "" else { return false }
+            
+            send(message)
+            
+            return false
+        }
+        
+        return true
     }
 }

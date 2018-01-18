@@ -6,4 +6,12 @@
 //  Copyright © 2018 Stanwood. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+@IBDesignable
+class BubbleTextView: UITextView {
+    override func awakeFromNib() {
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
+    }
+}
