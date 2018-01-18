@@ -14,6 +14,7 @@
 		AE2697FB2010A029001CCA25 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; };
 		AED706D02010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* ChatWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* ChatWireframe.swift */; };
+		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		AE2697FA2010A029001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalChatViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* ChatWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatWireframe.swift; sourceTree = "<group>"; };
+		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		AE2697E5200FC1FE001CCA25 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				AED706D32010BACE00E1E565 /* Utilities */,
 				AE2697E6200FC1FE001CCA25 /* Chat.h */,
 				AE2697E7200FC1FE001CCA25 /* Info.plist */,
 				AE2697EE201097A7001CCA25 /* ChatViewController.swift */,
@@ -96,6 +99,14 @@
 				AE2697FA2010A029001CCA25 /* Info.plist */,
 			);
 			path = ChatTests;
+			sourceTree = "<group>";
+		};
+		AED706D32010BACE00E1E565 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				AED706D42010BAE000E1E565 /* KeyboardHandler.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 				AED706D02010AB4C00E1E565 /* InternalChatViewControllerConfiguration.swift in Sources */,
 				AE2697EF201097A7001CCA25 /* ChatViewController.swift in Sources */,
 				AED706D22010AB8300E1E565 /* ChatWireframe.swift in Sources */,
+				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

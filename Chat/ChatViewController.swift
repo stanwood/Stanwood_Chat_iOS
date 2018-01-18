@@ -33,12 +33,23 @@ public class ChatViewController: UIViewController {
     var dataSource: InternalChatViewControllerDataSource?
     var delegate: InternalChatViewControllerDelegate?
     
+    private var keyboardHandler: KeyboardHandler!
+    
     @IBAction private func sendDidTap() {
         guard let message = textField.text, message != "" else { return }
         
         send(message)
         
         textField.text = nil
+    }
+    
+    override public func viewDidLoad() {
+        super.viewDidLoad()
+        
+        keyboardHandler = KeyboardHandler(
+            withBottomConstraint: bottomLayoutConstraint,
+            andAnimations: { self.view.layoutIfNeeded() }
+        )
     }
     
     public func reply(with message: String) {
