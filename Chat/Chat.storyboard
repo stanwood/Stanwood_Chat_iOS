@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yDY-mU-lQp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chat View Controller-->
+        <scene sceneID="8PC-6e-AIE">
+            <objects>
+                <viewController id="yDY-mU-lQp" customClass="ChatViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kbb-Zl-odb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-04-W7x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S8d-vE-ICF">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEF-pe-cjy">
+                                        <rect key="frame" x="0.0" y="637" width="375" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZs-2c-tv8">
+                                                <rect key="frame" x="0.0" y="0.0" width="339" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHc-UQ-tZ5">
+                                                <rect key="frame" x="339" y="0.0" width="36" height="30"/>
+                                                <state key="normal" title="Send"/>
+                                                <connections>
+                                                    <action selector="sendDidTap" destination="yDY-mU-lQp" eventType="touchUpInside" id="jT0-xp-H6z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ffx-cu-rRY" firstAttribute="bottom" secondItem="MeS-04-W7x" secondAttribute="bottom" id="5BU-v7-VMk"/>
+                            <constraint firstItem="Ffx-cu-rRY" firstAttribute="top" secondItem="MeS-04-W7x" secondAttribute="top" constant="20" id="DuS-p1-AOK"/>
+                            <constraint firstItem="Ffx-cu-rRY" firstAttribute="trailing" secondItem="MeS-04-W7x" secondAttribute="trailing" id="k3p-MB-d5s"/>
+                            <constraint firstItem="MeS-04-W7x" firstAttribute="leading" secondItem="Ffx-cu-rRY" secondAttribute="leading" id="tXp-v4-fLY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ffx-cu-rRY"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomLayoutConstraint" destination="5BU-v7-VMk" id="naS-JM-lb9"/>
+                        <outlet property="tableView" destination="S8d-vE-ICF" id="ROi-6S-ivR"/>
+                        <outlet property="textField" destination="BZs-2c-tv8" id="OTM-X5-fAh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YzI-qx-2n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="-9.4452773613193415"/>
+        </scene>
+    </scenes>
+</document>
