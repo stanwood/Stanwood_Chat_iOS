@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE15596B2010C53A00F475C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15596A2010C53A00F475C5 /* MessageCell.swift */; };
 		AE2697E8200FC1FE001CCA25 /* Dialogue.h in Headers */ = {isa = PBXBuildFile; fileRef = AE2697E6200FC1FE001CCA25 /* Dialogue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697EE201097A7001CCA25 /* DialogueViewController.swift */; };
 		AE2697F12010996C001CCA25 /* Dialogue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2697F02010996C001CCA25 /* Dialogue.storyboard */; };
 		AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */; };
 		AE2697FB2010A029001CCA25 /* Dialogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; };
+		AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */; };
 		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
 		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
@@ -28,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE15596A2010C53A00F475C5 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		AE2697E3200FC1FE001CCA25 /* Dialogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dialogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2697E6200FC1FE001CCA25 /* Dialogue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dialogue.h; sourceTree = "<group>"; };
 		AE2697E7200FC1FE001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		AE2697F62010A029001CCA25 /* DialogueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DialogueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewControllerTests.swift; sourceTree = "<group>"; };
 		AE2697FA2010A029001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
 		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
@@ -60,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE15596C2010C57300F475C5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				AE15596A2010C53A00F475C5 /* MessageCell.swift */,
+				AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		AE2697D9200FC1FE001CCA25 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +94,7 @@
 		AE2697E5200FC1FE001CCA25 /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
+				AE15596C2010C57300F475C5 /* UI */,
 				AED706D32010BACE00E1E565 /* Utilities */,
 				AE2697E6200FC1FE001CCA25 /* Dialogue.h */,
 				AE2697E7200FC1FE001CCA25 /* Info.plist */,
@@ -223,6 +237,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */,
+				AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */,
+				AE15596B2010C53A00F475C5 /* MessageCell.swift in Sources */,
 				AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */,
 				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,

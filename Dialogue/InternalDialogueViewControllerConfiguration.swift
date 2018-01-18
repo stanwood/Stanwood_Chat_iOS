@@ -23,6 +23,32 @@ internal class InternalDialogueViewControllerConfiguration {
     }
 }
 
+extension InternalDialogueViewControllerConfiguration: InternalDialogueViewControllerDataSource {
+    func numberOfMessages() -> Int {
+        return messages.count
+    }
+    
+    func messageCellViewModel(at index: Int) -> MessageCellViewModel {
+        let message = messages[index]
+        
+        return MessageCellViewModel(
+            text: "\(message)",
+            sender: MessageCellViewModel.MessageSender.sender(for: message)
+        )
+    }
+}
+
+extension MessageCellViewModel.MessageSender {
+    static func sender(for message: Message) -> MessageCellViewModel.MessageSender {
+        switch message {
+        case .received(_):
+            return MessageCellViewModel.MessageSender.user
+        case .replied(_):
+            return MessageCellViewModel.MessageSender.app
+        }
+    }
+}
+
 extension InternalDialogueViewControllerConfiguration: InternalDialogueViewControllerDelegate {
     func didReply(with message: String) {
         add(.replied(message))
@@ -36,7 +62,5 @@ extension InternalDialogueViewControllerConfiguration: InternalDialogueViewContr
     
     private func add(_ message: Message) {
         messages.append(message)
-        
-        print(message)
     }
 }

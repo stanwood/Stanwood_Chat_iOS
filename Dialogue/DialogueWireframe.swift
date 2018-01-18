@@ -14,7 +14,10 @@ public class DialogueWireframe {
         ) -> DialogueViewController {
         
         let viewController = DialogueViewController.loadFromStoryboard()
-        viewController.delegate = InternalDialogueViewControllerConfiguration(decorating: delegate)
+        
+        let internalConfiguration = InternalDialogueViewControllerConfiguration(decorating: delegate)
+        viewController.delegate = internalConfiguration
+        viewController.dataSource = internalConfiguration
         
         return viewController
     }

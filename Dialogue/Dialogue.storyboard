@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yDY-mU-lQp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,29 +13,76 @@
         <!--Dialogue View Controller-->
         <scene sceneID="8PC-6e-AIE">
             <objects>
-                <viewController id="yDY-mU-lQp" customClass="DialogueViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yDY-mU-lQp" customClass="DialogueViewController" customModule="Dialogue" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kbb-Zl-odb">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-04-W7x">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S8d-vE-ICF">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="637"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" id="Otc-Dk-pEW" customClass="MessageCell" customModule="Dialogue" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Otc-Dk-pEW" id="hGs-7g-qQK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GvD-1c-qjN" customClass="BubbleTextView" customModule="Dialogue" customModuleProvider="target">
+                                                            <rect key="frame" x="15" y="0.0" width="93.5" height="44"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="10"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </textView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GvD-1c-qjN" secondAttribute="trailing" constant="45" placeholder="YES" id="5dF-os-DMX"/>
+                                                        <constraint firstAttribute="bottom" secondItem="GvD-1c-qjN" secondAttribute="bottom" constant="-0.5" id="94p-Zh-858"/>
+                                                        <constraint firstItem="GvD-1c-qjN" firstAttribute="top" secondItem="hGs-7g-qQK" secondAttribute="top" id="Nn8-MO-Qoo"/>
+                                                        <constraint firstItem="GvD-1c-qjN" firstAttribute="leading" secondItem="hGs-7g-qQK" secondAttribute="leading" constant="15" placeholder="YES" id="UEr-lj-UdJ"/>
+                                                        <constraint firstItem="GvD-1c-qjN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hGs-7g-qQK" secondAttribute="leading" constant="45" placeholder="YES" id="Y6x-pp-ZzJ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="GvD-1c-qjN" secondAttribute="trailing" constant="15" placeholder="YES" id="awH-ec-NGM"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Y6x-pp-ZzJ"/>
+                                                            <exclude reference="awH-ec-NGM"/>
+                                                        </mask>
+                                                    </variation>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="textView" destination="GvD-1c-qjN" id="Tqk-bB-uAj"/>
+                                                    <outletCollection property="rightAlignedLayoutConstraints" destination="Y6x-pp-ZzJ" collectionClass="NSMutableArray" id="TrH-zt-Gc2"/>
+                                                    <outletCollection property="rightAlignedLayoutConstraints" destination="awH-ec-NGM" collectionClass="NSMutableArray" id="CbA-gB-tJ5"/>
+                                                    <outletCollection property="leftAlignedLayoutConstraints" destination="5dF-os-DMX" collectionClass="NSMutableArray" id="BBZ-Nz-ud8"/>
+                                                    <outletCollection property="leftAlignedLayoutConstraints" destination="UEr-lj-UdJ" collectionClass="NSMutableArray" id="JpG-FA-1fr"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="yDY-mU-lQp" id="npL-xO-rYT"/>
+                                        </connections>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEF-pe-cjy">
-                                        <rect key="frame" x="0.0" y="600" width="600" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="637" width="375" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BZs-2c-tv8">
-                                                <rect key="frame" x="0.0" y="0.0" width="564" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="339" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHc-UQ-tZ5">
-                                                <rect key="frame" x="564" y="0.0" width="36" height="0.0"/>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHc-UQ-tZ5">
+                                                <rect key="frame" x="339" y="0.0" width="36" height="30"/>
                                                 <state key="normal" title="Send"/>
                                                 <connections>
                                                     <action selector="sendDidTap" destination="yDY-mU-lQp" eventType="touchUpInside" id="jT0-xp-H6z"/>

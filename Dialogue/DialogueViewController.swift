@@ -9,6 +9,8 @@
 import UIKit
 
 internal protocol InternalDialogueViewControllerDataSource: class {
+    func numberOfMessages() -> Int
+    func messageCellViewModel(at index: Int) -> MessageCellViewModel
 }
 
 public protocol DialogueViewControllerDelegate: class {
@@ -29,8 +31,8 @@ public class DialogueViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var textField: UITextField!
     
-    weak var dataSource: InternalDialogueViewControllerDataSource?
-    weak var delegate: InternalDialogueViewControllerDelegate?
+    var dataSource: InternalDialogueViewControllerDataSource?
+    var delegate: InternalDialogueViewControllerDelegate?
     
     private var keyboardHandler: KeyboardHandler!
     
@@ -49,13 +51,56 @@ public class DialogueViewController: UIViewController {
             withBottomConstraint: bottomLayoutConstraint,
             andAnimations: { self.view.layoutIfNeeded() }
         )
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
     }
     
     public func reply(with message: String) {
         delegate?.didReply(with: message)
+        
+        reloadTableView()
     }
     
     private func send(_ message: String) {
         delegate?.didReceive(message)
+        
+        reloadTableView()
+    }
+    
+    private func reloadTableView() {
+        guard let dataSource = dataSource else { return }
+        
+        tableView.reloadData()
+        tableView.scrollToRow(
+            at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
+            at: UITableViewScrollPosition.bottom,
+            animated: true
+        )
+    }
+}
+
+
+extension DialogueViewController: UITableViewDataSource {
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource?.numberOfMessages() ?? 0
+    }
+    
+    public func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+        ) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+        
+        guard let dataSource = dataSource else { return cell }
+        
+        cell.prepare(with: dataSource.messageCellViewModel(at: indexPath.row))
+        
+        return cell
     }
 }

@@ -4,15 +4,10 @@ import Dialogue
 
 class DialogueViewControllerConfiguration {
     weak var viewController: DialogueViewController!
-    
-    deinit {
-        print("deinit")
-    }
 }
 
 extension DialogueViewControllerConfiguration: DialogueViewControllerDelegate {
     func didReceive(_ message: String) {
-        print("d")
         viewController.reply(with: "Thx for your message: \(message)")
     }
 }
