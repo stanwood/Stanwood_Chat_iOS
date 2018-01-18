@@ -36,12 +36,6 @@ public class DialogueViewController: UIViewController {
     
     private var keyboardHandler: KeyboardHandler!
     
-    @IBAction private func sendDidTap() {
-        guard let message = textView.text, message != "" else { return }
-        
-        send(message)
-    }
-    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
