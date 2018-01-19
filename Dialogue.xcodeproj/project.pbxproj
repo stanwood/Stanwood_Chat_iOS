@@ -18,6 +18,7 @@
 		AE8BFA2C2010F34D00FE3AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8BFA2A2010F34D00FE3AEA /* LaunchScreen.storyboard */; };
 		AE8BFA332010FABE00FE3AEA /* Dialogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; };
 		AE8BFA342010FABE00FE3AEA /* Dialogue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */; };
 		AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */; };
 		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
@@ -70,6 +71,7 @@
 		AE8BFA282010F34D00FE3AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE8BFA2B2010F34D00FE3AEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE8BFA2D2010F34D00FE3AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 		AE2697E5200FC1FE001CCA25 /* Dialogue */ = {
 			isa = PBXGroup;
 			children = (
+				AE8BFA392011EDD100FE3AEA /* Extensions */,
 				AE15596C2010C57300F475C5 /* UI */,
 				AED706D32010BACE00E1E565 /* Utilities */,
 				AE2697E6200FC1FE001CCA25 /* Dialogue.h */,
@@ -165,6 +168,14 @@
 				AE8BFA2D2010F34D00FE3AEA /* Info.plist */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		AE8BFA392011EDD100FE3AEA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AED706D32010BACE00E1E565 /* Utilities */ = {
@@ -326,6 +337,7 @@
 				AE15596B2010C53A00F475C5 /* MessageCell.swift in Sources */,
 				AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */,
 				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
+				AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

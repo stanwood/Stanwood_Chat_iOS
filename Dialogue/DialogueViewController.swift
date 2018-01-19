@@ -89,7 +89,7 @@ extension DialogueViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+        let cell = tableView.dequeue(cellType: MessageCell.self, for: indexPath)
         
         guard let dataSource = dataSource else { return cell }
         
