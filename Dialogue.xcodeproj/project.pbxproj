@@ -22,6 +22,8 @@
 		AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */; };
 		AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */; };
 		AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */; };
+		AE9D39C020124FD000F79281 /* OrdinalTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */; };
+		AE9D39C22012533500F79281 /* OrdinalRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */; };
 		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
 		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
@@ -77,6 +79,8 @@
 		AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewCustomizingLayout.swift; sourceTree = "<group>"; };
 		AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtTheBottomKeeper.swift; sourceTree = "<group>"; };
+		AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalTypeTests.swift; sourceTree = "<group>"; };
+		AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalRecognizer.swift; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
 		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 			children = (
 				AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */,
 				AE2697FA2010A029001CCA25 /* Info.plist */,
+				AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */,
 			);
 			path = DialogueTests;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			children = (
 				AED706D42010BAE000E1E565 /* KeyboardHandler.swift */,
 				AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */,
+				AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 				AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */,
 				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
 				AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */,
+				AE9D39C22012533500F79281 /* OrdinalRecognizer.swift in Sources */,
 				AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
@@ -355,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */,
+				AE9D39C020124FD000F79281 /* OrdinalTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
