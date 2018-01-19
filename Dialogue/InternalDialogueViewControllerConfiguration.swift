@@ -65,7 +65,9 @@ extension InternalDialogueViewControllerConfiguration: InternalDialogueViewContr
     func didReceive(_ message: String) {
         add(.received(message))
         
-        delegate?.didReceive(message)
+        DispatchQueue.main.async { [weak self] in
+            self?.delegate?.didReceive(message)
+        }
     }
     
     private func add(_ message: Message) {

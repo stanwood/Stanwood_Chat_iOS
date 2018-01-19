@@ -20,6 +20,8 @@
 		AE8BFA342010FABE00FE3AEA /* Dialogue.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */; };
 		AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */; };
+		AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */; };
+		AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */; };
 		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
 		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
@@ -73,6 +75,8 @@
 		AE8BFA2D2010F34D00FE3AEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
+		AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewCustomizingLayout.swift; sourceTree = "<group>"; };
+		AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtTheBottomKeeper.swift; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
 		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				AE15596A2010C53A00F475C5 /* MessageCell.swift */,
 				AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */,
+				AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -182,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				AED706D42010BAE000E1E565 /* KeyboardHandler.swift */,
+				AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -336,8 +342,10 @@
 				AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */,
 				AE15596B2010C53A00F475C5 /* MessageCell.swift in Sources */,
 				AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */,
+				AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */,
 				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
 				AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */,
+				AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

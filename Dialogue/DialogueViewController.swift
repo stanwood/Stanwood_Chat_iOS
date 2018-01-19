@@ -35,6 +35,11 @@ public class DialogueViewController: UIViewController {
     var delegate: InternalDialogueViewControllerDelegate?
     
     private var keyboardHandler: KeyboardHandler!
+    private var atTheBottomKeeper: AtTheBottomKeeper!
+    
+    private var tableViewBottomOffset: CGFloat {
+        return view.frame.size.height - tableView.frame.size.height
+    }
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -44,28 +49,39 @@ public class DialogueViewController: UIViewController {
             andAnimations: { self.view.layoutIfNeeded() }
         )
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100
+        atTheBottomKeeper = AtTheBottomKeeper(for: tableView)
     }
     
     public func reply(with message: String) {
         delegate?.didReply(with: message)
         
-        reloadTableView()
+        insertNewRow()
+        scrollToTheBottom()
     }
     
     private func send(_ message: String) {
         delegate?.didReceive(message)
         
-        reloadTableView()
+        insertNewRow()
+        scrollToTheBottom()
         
         textView.text = nil
     }
     
-    private func reloadTableView() {
+    private func insertNewRow() {
         guard let dataSource = dataSource else { return }
         
-        tableView.reloadData()
+        tableView.beginUpdates()
+        tableView.insertRows(
+            at: [IndexPath(row: dataSource.numberOfMessages() - 1, section: 0)],
+            with: .fade
+        )
+        tableView.endUpdates()
+    }
+    
+    private func scrollToTheBottom() {
+        guard let dataSource = dataSource else { return }
+        
         tableView.scrollToRow(
             at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
             at: UITableViewScrollPosition.bottom,
@@ -73,7 +89,6 @@ public class DialogueViewController: UIViewController {
         )
     }
 }
-
 
 extension DialogueViewController: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,5 +130,21 @@ extension DialogueViewController: UITextViewDelegate {
         }
         
         return true
+    }
+    
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        atTheBottomKeeper.activate(withBottomOffset: tableViewBottomOffset)
+        
+        return true
+    }
+    
+    public func textViewDidEndEditing(_ textView: UITextView) {
+        atTheBottomKeeper.deactivate()
+    }
+}
+
+extension DialogueViewController: UIStackViewDelegate {
+    func didLayoutSubViews() {
+        atTheBottomKeeper.update(withBottomOffset: tableViewBottomOffset)
     }
 }
