@@ -37,6 +37,17 @@ class OrdinalRecognizer {
             switch (previousMessage, message, nextMessage) {
             case (nil, _, nil):
                 return .standalone
+            
+            case let (previousMessage?, message, nextMessage?)
+                where previousMessage.isOfTheSameType(as: message)
+                    && message.isOfTheSameType(as: nextMessage):
+                
+                return .middleInTheSerie
+                
+            case let (_, message, nextMessage?)
+                where message.isOfTheSameType(as: nextMessage):
+                
+                return .firstInTheSerie
                 
             case let (nil, message, nextMessage?)
                 where message.isOfTheSameType(as: nextMessage):
@@ -48,20 +59,16 @@ class OrdinalRecognizer {
                 
                 return .lastInTheSerie
                 
-            case let (previousMessage?, message, nil)
+            case let (previousMessage?, message, _)
                 where !previousMessage.isOfTheSameType(as: message):
                 
                 return .standalone
+                
             case let (nil, message, nextMessage?)
                 where !message.isOfTheSameType(as: nextMessage):
                 
                 return .standalone
-                
-            case let (previousMessage?, message, nextMessage?)
-                where previousMessage.isOfTheSameType(as: message) && message.isOfTheSameType(as: nextMessage):
-                
-                return .middleInTheSerie
-                
+            
             default:
                 return nil
             }

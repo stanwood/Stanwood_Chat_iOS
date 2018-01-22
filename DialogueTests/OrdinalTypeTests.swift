@@ -92,7 +92,39 @@ class OrdinalTypeTests: XCTestCase {
         XCTAssert(ordinalType == .middleInTheSerie)
     }
     
+    func testThreeAlteringMessagesReturnsMiddleAt1() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.repliedDummy,
+            Message.receivedDummy,
+        ]
+        
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        
+        XCTAssert(ordinalType == .standalone)
+    }
+    
+    func testThreeMessages1vs2ReturnsFirstAt1() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.repliedDummy,
+            Message.repliedDummy,
+            ]
+        
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
         
         XCTAssert(ordinalType == .firstInTheSerie)
+    }
+    
+    func testThreeMessages2vs1ReturnsLastAt2() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.receivedDummy,
+            Message.repliedDummy,
+            ]
+        
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 2)
+        
+        XCTAssert(ordinalType == .lastInTheSerie)
     }
 }
