@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dialogue View Controller-->
+        <!--Delegate-->
         <scene sceneID="8PC-6e-AIE">
             <objects>
                 <viewController id="yDY-mU-lQp" customClass="DialogueViewController" customModule="Dialogue" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,9 +24,10 @@
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S8d-vE-ICF">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" id="Otc-Dk-pEW" customClass="MessageCell" customModule="Dialogue" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="0.0" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Otc-Dk-pEW" id="hGs-7g-qQK">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -44,6 +45,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
                                                     </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GvD-1c-qjN" secondAttribute="trailing" constant="45" id="5dF-os-DMX"/>
                                                         <constraint firstAttribute="bottom" secondItem="GvD-1c-qjN" secondAttribute="bottom" constant="3" id="94p-Zh-858"/>
@@ -59,6 +61,7 @@
                                                         </mask>
                                                     </variation>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <connections>
                                                     <outlet property="textView" destination="GvD-1c-qjN" id="Tqk-bB-uAj"/>
                                                     <outletCollection property="leftAlignedLayoutConstraints" destination="5dF-os-DMX" collectionClass="NSMutableArray" id="fPF-a0-07F"/>
