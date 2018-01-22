@@ -9,6 +9,9 @@
 import UIKit
 
 internal protocol InternalDialogueViewControllerDataSource: class {
+    var penultimateMessageIndex: Int? { get }
+    var shouldReloadPenultimateMessage: Bool { get }
+    
     func numberOfMessages() -> Int
     func messageCellViewModel(at index: Int) -> MessageCellViewModel
 }
@@ -62,10 +65,26 @@ public class DialogueViewController: UIViewController {
     private func send(_ message: String) {
         delegate?.didReceive(message)
         
+        reloadPenultimateRowIfNeeded()
         insertNewRow()
         scrollToTheBottom()
         
         textView.text = nil
+    }
+    
+    private func reloadPenultimateRowIfNeeded() {
+        guard let dataSource = dataSource else { return }
+        guard dataSource.shouldReloadPenultimateMessage else { return }
+        
+        if let penultimateMessageIndex = dataSource.penultimateMessageIndex {
+            DispatchQueue.main.async { [unowned self] in
+                self.tableView.reloadRows(
+                    at: [IndexPath(row: penultimateMessageIndex, section: 0)],
+                    with: UITableViewRowAnimation.fade
+                )
+            }
+            
+        }
     }
     
     private func insertNewRow() {

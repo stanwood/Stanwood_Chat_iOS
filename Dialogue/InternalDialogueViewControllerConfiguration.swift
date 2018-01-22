@@ -11,6 +11,17 @@ import Foundation
 enum Message {
     case received(String)
     case replied(String)
+    
+    func isOfTheSameType(as message: Message) -> Bool {
+        switch (self, message) {
+        case (.received(_), .received(_)):
+            fallthrough
+        case (.replied(_), .replied(_)):
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 internal class InternalDialogueViewControllerConfiguration {
@@ -24,6 +35,21 @@ internal class InternalDialogueViewControllerConfiguration {
 }
 
 extension InternalDialogueViewControllerConfiguration: InternalDialogueViewControllerDataSource {
+    var penultimateMessageIndex: Int? {
+        guard messages.count > 1 else { return nil }
+        
+        return messages.count - 1
+    }
+    
+    var shouldReloadPenultimateMessage: Bool {
+        guard let penultimateMessageIndex = penultimateMessageIndex else { return false }
+        
+        let lastMessage = messages.last!
+        let penultimateMessage = messages[penultimateMessageIndex]
+
+        return lastMessage.isOfTheSameType(as: penultimateMessage)
+    }
+    
     func numberOfMessages() -> Int {
         return messages.count
     }
@@ -39,20 +65,23 @@ extension InternalDialogueViewControllerConfiguration: InternalDialogueViewContr
             text = _text
         }
         
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        
         return MessageCellViewModel(
             text: text,
-            sender: MessageCellViewModel.MessageSender.sender(for: message)
+            sender: MessageCellViewModel.Sender.sender(for: message),
+            ordinalType: ordinalType ?? .standalone
         )
     }
 }
 
-extension MessageCellViewModel.MessageSender {
-    static func sender(for message: Message) -> MessageCellViewModel.MessageSender {
+extension MessageCellViewModel.Sender {
+    static func sender(for message: Message) -> MessageCellViewModel.Sender {
         switch message {
         case .received(_):
-            return MessageCellViewModel.MessageSender.user
+            return MessageCellViewModel.Sender.user
         case .replied(_):
-            return MessageCellViewModel.MessageSender.app
+            return MessageCellViewModel.Sender.app
         }
     }
 }

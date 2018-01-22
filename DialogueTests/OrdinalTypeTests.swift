@@ -44,14 +44,54 @@ class OrdinalTypeTests: XCTestCase {
 
         XCTAssert(ordinalType == nil)
     }
-    
+
     func testTwoMessagesOfTheSameTypeReturnsFirstAt0() {
         let messages: [Message] = [
             Message.receivedDummy,
             Message.receivedDummy
         ]
-        
+
         let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+
+        XCTAssert(ordinalType == .firstInTheSerie)
+    }
+
+    func testTwoMessagesOfTheSameTypeReturnsLastAt1() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.receivedDummy
+        ]
+
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+
+        XCTAssert(ordinalType == .lastInTheSerie)
+    }
+
+    func testTwoMessagesOfDifferentTypesReturnsStandalone() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.repliedDummy
+        ]
+
+        let ordinalType0 = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType1 = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+
+        XCTAssert(ordinalType0 == .standalone)
+        XCTAssert(ordinalType1 == .standalone)
+    }
+    
+    func testThreeMessagesOfTheSameTypeReturnsMiddleAt1() {
+        let messages: [Message] = [
+            Message.receivedDummy,
+            Message.receivedDummy,
+            Message.receivedDummy
+        ]
+
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+
+        XCTAssert(ordinalType == .middleInTheSerie)
+    }
+    
         
         XCTAssert(ordinalType == .firstInTheSerie)
     }

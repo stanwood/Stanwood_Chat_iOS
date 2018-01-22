@@ -9,26 +9,37 @@
 import UIKit
 
 struct MessageCellViewModel {
-    enum MessageSender {
+    enum Sender {
         case user
         case app
     }
     
+    enum OrdinalType {
+        case standalone
+        case firstInTheSerie
+        case middleInTheSerie
+        case lastInTheSerie
+    }
+    
     let text: String
-    let sender: MessageSender
+    let sender: Sender
+    let ordinalType: OrdinalType
     
     fileprivate init() {
         text = ""
         sender = .app
+        ordinalType = .firstInTheSerie
     }
     
     init(
         text: String,
-        sender: MessageSender
+        sender: Sender,
+        ordinalType: OrdinalType
         ) {
         
         self.text = text
         self.sender = sender
+        self.ordinalType = ordinalType
     }
 }
 
@@ -64,9 +75,10 @@ class MessageCell: UITableViewCell {
         textView.text = viewModel.text
         
         adjust(for: viewModel.sender)
+        adjust(with: viewModel.ordinalType)
     }
     
-    private func adjust(for sender: MessageCellViewModel.MessageSender) {
+    private func adjust(for sender: MessageCellViewModel.Sender) {
         switch sender {
         case .app:
             textView.backgroundColor = UIColor.red

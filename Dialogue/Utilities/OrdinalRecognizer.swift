@@ -22,11 +22,48 @@ class OrdinalRecognizer {
             return .standalone
         }
         else {
-            if index < messages.count - 1 {
-                return .firstInTheSerie
+            let message = messages[index]
+            
+            var previousMessage: Message? = nil
+            if index > 0 {
+                previousMessage = messages[index - 1]
             }
-            else {
+            
+            var nextMessage: Message? = nil
+            if index < messages.count - 1 {
+                nextMessage = messages[index + 1]
+            }
+            
+            switch (previousMessage, message, nextMessage) {
+            case (nil, _, nil):
+                return .standalone
+                
+            case let (nil, message, nextMessage?)
+                where message.isOfTheSameType(as: nextMessage):
+                
+                return .firstInTheSerie
+                
+            case let (previousMessage?, message, nil) where
+                previousMessage.isOfTheSameType(as: message):
+                
                 return .lastInTheSerie
+                
+            case let (previousMessage?, message, nil)
+                where !previousMessage.isOfTheSameType(as: message):
+                
+                return .standalone
+            case let (nil, message, nextMessage?)
+                where !message.isOfTheSameType(as: nextMessage):
+                
+                return .standalone
+                
+            case let (previousMessage?, message, nextMessage?)
+                where previousMessage.isOfTheSameType(as: message) && message.isOfTheSameType(as: nextMessage):
+                
+                return .middleInTheSerie
+                
+            default:
+                return nil
             }
         }
     }
