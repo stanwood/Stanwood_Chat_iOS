@@ -24,7 +24,7 @@ class OrdinalTypeTests: XCTestCase {
     func testEmptyMessagesReturnsNil() {
         let messages: [Message] = []
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 0)
         
         XCTAssert(ordinalType == nil)
     }
@@ -32,7 +32,7 @@ class OrdinalTypeTests: XCTestCase {
     func testSingleMessageReturnsStandaloneAt0() {
         let messages: [Message] = [Message.receivedDummy]
 
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 0)
 
         XCTAssert(ordinalType == .standalone)
     }
@@ -40,7 +40,7 @@ class OrdinalTypeTests: XCTestCase {
     func testSingleMessageReturnsNilAt1() {
         let messages: [Message] = [Message.receivedDummy]
 
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
 
         XCTAssert(ordinalType == nil)
     }
@@ -51,7 +51,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.receivedDummy
         ]
 
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 0)
 
         XCTAssert(ordinalType == .firstInTheSerie)
     }
@@ -62,7 +62,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.receivedDummy
         ]
 
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
 
         XCTAssert(ordinalType == .lastInTheSerie)
     }
@@ -73,8 +73,8 @@ class OrdinalTypeTests: XCTestCase {
             Message.repliedDummy
         ]
 
-        let ordinalType0 = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
-        let ordinalType1 = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType0 = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType1 = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
 
         XCTAssert(ordinalType0 == .standalone)
         XCTAssert(ordinalType1 == .standalone)
@@ -87,7 +87,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.receivedDummy
         ]
 
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
 
         XCTAssert(ordinalType == .middleInTheSerie)
     }
@@ -99,7 +99,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.receivedDummy,
         ]
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
         
         XCTAssert(ordinalType == .standalone)
     }
@@ -111,7 +111,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.repliedDummy,
             ]
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
         
         XCTAssert(ordinalType == .firstInTheSerie)
     }
@@ -123,7 +123,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.repliedDummy,
             ]
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: 1)
         
         XCTAssert(ordinalType == .lastInTheSerie)
     }

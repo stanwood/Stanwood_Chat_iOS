@@ -13,6 +13,8 @@
 		AE2697F12010996C001CCA25 /* Dialogue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE2697F02010996C001CCA25 /* Dialogue.storyboard */; };
 		AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */; };
 		AE2697FB2010A029001CCA25 /* Dialogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Dialogue.framework */; };
+		AE3C19ED2015F6BB0025DABA /* KeepingAtTheBottomOffsetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C19EC2015F6BB0025DABA /* KeepingAtTheBottomOffsetCalculatorTests.swift */; };
+		AE3C19EF2015F79C0025DABA /* UIScrollView+VerticallyOffsetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C19EE2015F79C0025DABA /* UIScrollView+VerticallyOffsetable.swift */; };
 		AE8BFA222010F34D00FE3AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BFA212010F34D00FE3AEA /* AppDelegate.swift */; };
 		AE8BFA292010F34D00FE3AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE8BFA282010F34D00FE3AEA /* Assets.xcassets */; };
 		AE8BFA2C2010F34D00FE3AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8BFA2A2010F34D00FE3AEA /* LaunchScreen.storyboard */; };
@@ -21,9 +23,9 @@
 		AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */; };
 		AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */; };
 		AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */; };
-		AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */; };
+		AE9D39BE2012277F00F79281 /* KeepingAtTheBottomOffsetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BD2012277F00F79281 /* KeepingAtTheBottomOffsetCalculator.swift */; };
 		AE9D39C020124FD000F79281 /* OrdinalTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */; };
-		AE9D39C22012533500F79281 /* OrdinalRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */; };
+		AE9D39C22012533500F79281 /* OrdinalTypeRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9D39C12012533500F79281 /* OrdinalTypeRecognizer.swift */; };
 		AED706D02010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */; };
 		AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D12010AB8300E1E565 /* DialogueWireframe.swift */; };
 		AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED706D42010BAE000E1E565 /* KeyboardHandler.swift */; };
@@ -70,6 +72,8 @@
 		AE2697F62010A029001CCA25 /* DialogueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DialogueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueViewControllerTests.swift; sourceTree = "<group>"; };
 		AE2697FA2010A029001CCA25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE3C19EC2015F6BB0025DABA /* KeepingAtTheBottomOffsetCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepingAtTheBottomOffsetCalculatorTests.swift; sourceTree = "<group>"; };
+		AE3C19EE2015F79C0025DABA /* UIScrollView+VerticallyOffsetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+VerticallyOffsetable.swift"; sourceTree = "<group>"; };
 		AE8BFA1F2010F34D00FE3AEA /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8BFA212010F34D00FE3AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE8BFA282010F34D00FE3AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,9 +82,9 @@
 		AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		AE9144B32010E4FE004BD5B5 /* BubbleTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
 		AE9D39BB2012225F00F79281 /* UIStackViewCustomizingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewCustomizingLayout.swift; sourceTree = "<group>"; };
-		AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtTheBottomKeeper.swift; sourceTree = "<group>"; };
+		AE9D39BD2012277F00F79281 /* KeepingAtTheBottomOffsetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepingAtTheBottomOffsetCalculator.swift; sourceTree = "<group>"; };
 		AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalTypeTests.swift; sourceTree = "<group>"; };
-		AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalRecognizer.swift; sourceTree = "<group>"; };
+		AE9D39C12012533500F79281 /* OrdinalTypeRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdinalTypeRecognizer.swift; sourceTree = "<group>"; };
 		AED706CF2010AB4C00E1E565 /* InternalDialogueViewControllerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalDialogueViewControllerConfiguration.swift; sourceTree = "<group>"; };
 		AED706D12010AB8300E1E565 /* DialogueWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogueWireframe.swift; sourceTree = "<group>"; };
 		AED706D42010BAE000E1E565 /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
@@ -163,8 +167,9 @@
 			isa = PBXGroup;
 			children = (
 				AE2697F82010A029001CCA25 /* DialogueViewControllerTests.swift */,
-				AE2697FA2010A029001CCA25 /* Info.plist */,
+				AE3C19EC2015F6BB0025DABA /* KeepingAtTheBottomOffsetCalculatorTests.swift */,
 				AE9D39BF20124FD000F79281 /* OrdinalTypeTests.swift */,
+				AE2697FA2010A029001CCA25 /* Info.plist */,
 			);
 			path = DialogueTests;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 		AE8BFA392011EDD100FE3AEA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AE3C19EE2015F79C0025DABA /* UIScrollView+VerticallyOffsetable.swift */,
 				AE8BFA3A2011EDDE00FE3AEA /* UITableView+Reusable.swift */,
 			);
 			path = Extensions;
@@ -191,9 +197,9 @@
 		AED706D32010BACE00E1E565 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AE9D39BD2012277F00F79281 /* KeepingAtTheBottomOffsetCalculator.swift */,
 				AED706D42010BAE000E1E565 /* KeyboardHandler.swift */,
-				AE9D39BD2012277F00F79281 /* AtTheBottomKeeper.swift */,
-				AE9D39C12012533500F79281 /* OrdinalRecognizer.swift */,
+				AE9D39C12012533500F79281 /* OrdinalTypeRecognizer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -348,10 +354,11 @@
 				AE9144B42010E4FE004BD5B5 /* BubbleTextView.swift in Sources */,
 				AE15596B2010C53A00F475C5 /* MessageCell.swift in Sources */,
 				AE2697EF201097A7001CCA25 /* DialogueViewController.swift in Sources */,
-				AE9D39BE2012277F00F79281 /* AtTheBottomKeeper.swift in Sources */,
+				AE9D39BE2012277F00F79281 /* KeepingAtTheBottomOffsetCalculator.swift in Sources */,
 				AED706D22010AB8300E1E565 /* DialogueWireframe.swift in Sources */,
 				AE8BFA3B2011EDDE00FE3AEA /* UITableView+Reusable.swift in Sources */,
-				AE9D39C22012533500F79281 /* OrdinalRecognizer.swift in Sources */,
+				AE9D39C22012533500F79281 /* OrdinalTypeRecognizer.swift in Sources */,
+				AE3C19EF2015F79C0025DABA /* UIScrollView+VerticallyOffsetable.swift in Sources */,
 				AE9D39BC2012225F00F79281 /* UIStackViewCustomizingLayout.swift in Sources */,
 				AED706D52010BAE000E1E565 /* KeyboardHandler.swift in Sources */,
 			);
@@ -362,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE2697F92010A029001CCA25 /* DialogueViewControllerTests.swift in Sources */,
+				AE3C19ED2015F6BB0025DABA /* KeepingAtTheBottomOffsetCalculatorTests.swift in Sources */,
 				AE9D39C020124FD000F79281 /* OrdinalTypeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,13 +8,15 @@
 
 import Foundation
 
-class OrdinalRecognizer {
+//  The name and place is not right
+class OrdinalTypeRecognizer {
     private let messages: [Message]
     
     init(for messages: [Message]) {
         self.messages = messages
     }
     
+    //  this coupling to MessageCellViewModel.OrdinalType looks pretty bad...
     func ordinalTypeForMesage(at index: Int) -> MessageCellViewModel.OrdinalType? {
         guard index < messages.count else { return nil }
         
@@ -24,6 +26,7 @@ class OrdinalRecognizer {
         else {
             let message = messages[index]
             
+            //  extract to Sequence extension
             var previousMessage: Message? = nil
             if index > 0 {
                 previousMessage = messages[index - 1]

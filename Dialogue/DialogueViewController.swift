@@ -38,7 +38,7 @@ public class DialogueViewController: UIViewController {
     var delegate: InternalDialogueViewControllerDelegate?
     
     private var keyboardHandler: KeyboardHandler!
-    private var atTheBottomKeeper: AtTheBottomKeeper!
+    private var keepingAtTheBottomOffsetCalculator: KeepingAtTheBottomOffsetCalculator!
     
     private var tableViewBottomOffset: CGFloat {
         return view.frame.size.height - tableView.frame.size.height
@@ -49,10 +49,13 @@ public class DialogueViewController: UIViewController {
         
         keyboardHandler = KeyboardHandler(
             withBottomConstraint: bottomLayoutConstraint,
-            andAnimations: { self.view.layoutIfNeeded() }
+            andAnimations: { [unowned self] in
+                self.view.layoutIfNeeded()
+                self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+            }
         )
         
-        atTheBottomKeeper = AtTheBottomKeeper(for: tableView)
+        keepingAtTheBottomOffsetCalculator = KeepingAtTheBottomOffsetCalculator(for: tableView)
     }
     
     public func reply(with message: String) {
@@ -100,12 +103,15 @@ public class DialogueViewController: UIViewController {
     
     private func scrollToTheBottom() {
         guard let dataSource = dataSource else { return }
+        guard dataSource.numberOfMessages() > 0 else { return }
         
-        tableView.scrollToRow(
-            at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
-            at: UITableViewScrollPosition.bottom,
-            animated: true
-        )
+        DispatchQueue.main.async { [unowned self] in
+            self.tableView.scrollToRow(
+                at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
+                at: UITableViewScrollPosition.bottom,
+                animated: true
+            )
+        }
     }
 }
 
@@ -150,20 +156,12 @@ extension DialogueViewController: UITextViewDelegate {
         
         return true
     }
-    
-    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        atTheBottomKeeper.activate(withBottomOffset: tableViewBottomOffset)
-        
-        return true
-    }
-    
-    public func textViewDidEndEditing(_ textView: UITextView) {
-        atTheBottomKeeper.deactivate()
-    }
 }
 
 extension DialogueViewController: UIStackViewDelegate {
     func didLayoutSubViews() {
-        atTheBottomKeeper.update(withBottomOffset: tableViewBottomOffset)
+        DispatchQueue.main.async { [unowned self] in
+            self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+        }
     }
 }
