@@ -53,8 +53,8 @@ class OrdinalRecognizer {
                 where message.isOfTheSameType(as: nextMessage):
                 
                 return .firstInTheSerie
-                
-            case let (previousMessage?, message, nil) where
+
+            case let (previousMessage?, message, _) where
                 previousMessage.isOfTheSameType(as: message):
                 
                 return .lastInTheSerie

@@ -65,7 +65,7 @@ extension InternalDialogueViewControllerConfiguration: InternalDialogueViewContr
             text = _text
         }
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 0)
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: index)
         
         return MessageCellViewModel(
             text: text,

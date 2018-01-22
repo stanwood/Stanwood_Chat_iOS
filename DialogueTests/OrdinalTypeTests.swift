@@ -123,7 +123,7 @@ class OrdinalTypeTests: XCTestCase {
             Message.repliedDummy,
             ]
         
-        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 2)
+        let ordinalType = OrdinalRecognizer(for: messages).ordinalTypeForMesage(at: 1)
         
         XCTAssert(ordinalType == .lastInTheSerie)
     }
