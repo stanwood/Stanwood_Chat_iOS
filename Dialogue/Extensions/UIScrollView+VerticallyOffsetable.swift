@@ -21,4 +21,3 @@ extension UIScrollView: VerticallyOffsetable {
         return frame.size.height
     }
 }
-
