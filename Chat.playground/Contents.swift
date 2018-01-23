@@ -1,19 +1,19 @@
 import PlaygroundSupport
 
-import Dialogue
+import Chat
 
-class DialogueViewControllerConfiguration {
-    weak var viewController: DialogueViewController!
+class ChatViewControllerConfiguration {
+    weak var viewController: ChatViewController!
 }
 
-extension DialogueViewControllerConfiguration: DialogueViewControllerDelegate {
+extension ChatViewControllerConfiguration: ChatViewControllerDelegate {
     func didReceive(_ message: String) {
         viewController.reply(with: "Thx for your message: \(message)")
     }
 }
 
-let configuration = DialogueViewControllerConfiguration()
-let viewController = DialogueWireframe.instantiateDialogueViewController(
+let configuration = ChatViewControllerConfiguration()
+let viewController = ChatWireframe.instantiateChatViewController(
     with: configuration
 )
 configuration.viewController = viewController

@@ -1,6 +1,6 @@
 //
 //  KeepingAtTheBottomOffsetCalculatorTests.swift
-//  DialogueTests
+//  ChatTests
 //
 //  Created by Maciek on 22.01.2018.
 //  Copyright © 2018 Stanwood. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-@testable import Dialogue
+@testable import Chat
 
 struct VerticallyOffsetableContainer: VerticallyOffsetable {
     let contentOffsetY: CGFloat

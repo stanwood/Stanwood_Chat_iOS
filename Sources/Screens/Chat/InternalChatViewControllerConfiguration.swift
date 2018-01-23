@@ -1,6 +1,6 @@
 //
-//  InternalDialogueViewControllerConfiguration.swift
-//  Dialogue
+//  InternalChatViewControllerConfiguration.swift
+//  Chat
 //
 //  Created by Maciek on 18.01.2018.
 //  Copyright © 2018 Stanwood. All rights reserved.
@@ -24,17 +24,17 @@ enum Message {
     }
 }
 
-internal class InternalDialogueViewControllerConfiguration {
+internal class InternalChatViewControllerConfiguration {
     private var messages: [Message] = []
     
-    private let delegate: DialogueViewControllerDelegate?
+    private let delegate: ChatViewControllerDelegate?
     
-    init(decorating delegate: DialogueViewControllerDelegate? = nil) {
+    init(decorating delegate: ChatViewControllerDelegate? = nil) {
         self.delegate = delegate
     }
 }
 
-extension InternalDialogueViewControllerConfiguration: InternalDialogueViewControllerDataSource {
+extension InternalChatViewControllerConfiguration: InternalChatViewControllerDataSource {
     var penultimateMessageIndex: Int? {
         guard messages.count > 1 else { return nil }
         
@@ -86,7 +86,7 @@ extension MessageCellViewModel.Sender {
     }
 }
 
-extension InternalDialogueViewControllerConfiguration: InternalDialogueViewControllerDelegate {
+extension InternalChatViewControllerConfiguration: InternalChatViewControllerDelegate {
     func didReply(with message: String) {
         add(.replied(message))
     }

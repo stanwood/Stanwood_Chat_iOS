@@ -1,6 +1,6 @@
 //
-//  DialogueViewController.swift
-//  Dialogue
+//  ChatViewController.swift
+//  Chat
 //
 //  Created by Maciek on 18.01.2018.
 //  Copyright © 2018 Stanwood. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal protocol InternalDialogueViewControllerDataSource: class {
+internal protocol InternalChatViewControllerDataSource: class {
     var penultimateMessageIndex: Int? { get }
     var shouldReloadPenultimateMessage: Bool { get }
     
@@ -16,26 +16,26 @@ internal protocol InternalDialogueViewControllerDataSource: class {
     func messageCellViewModel(at index: Int) -> MessageCellViewModel
 }
 
-public protocol DialogueViewControllerDelegate: class {
+public protocol ChatViewControllerDelegate: class {
     func didReceive(_ message: String)
 }
 
-internal protocol InternalDialogueViewControllerDelegate: DialogueViewControllerDelegate {
+internal protocol InternalChatViewControllerDelegate: ChatViewControllerDelegate {
     func didReply(with message: String)
 }
 
-public class DialogueViewController: UIViewController {
-    static func loadFromStoryboard() -> DialogueViewController {
-        return UIStoryboard(name: "Dialogue", bundle: Bundle(for: DialogueViewController.self))
-            .instantiateInitialViewController() as! DialogueViewController
+public class ChatViewController: UIViewController {
+    static func loadFromStoryboard() -> ChatViewController {
+        return UIStoryboard(name: "Chat", bundle: Bundle(for: ChatViewController.self))
+            .instantiateInitialViewController() as! ChatViewController
     }
     
     @IBOutlet private weak var bottomLayoutConstraint: NSLayoutConstraint!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var textView: UITextView!
     
-    var dataSource: InternalDialogueViewControllerDataSource?
-    var delegate: InternalDialogueViewControllerDelegate?
+    var dataSource: InternalChatViewControllerDataSource?
+    var delegate: InternalChatViewControllerDelegate?
     
     private var keyboardHandler: KeyboardHandler!
     private var keepingAtTheBottomOffsetCalculator: KeepingAtTheBottomOffsetCalculator!
@@ -115,7 +115,7 @@ public class DialogueViewController: UIViewController {
     }
 }
 
-extension DialogueViewController: UITableViewDataSource {
+extension ChatViewController: UITableViewDataSource {
     public func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -139,7 +139,7 @@ extension DialogueViewController: UITableViewDataSource {
     }
 }
 
-extension DialogueViewController: UITextViewDelegate {
+extension ChatViewController: UITextViewDelegate {
     public func textView(
         _ textView: UITextView,
         shouldChangeTextIn range: NSRange,
@@ -158,7 +158,7 @@ extension DialogueViewController: UITextViewDelegate {
     }
 }
 
-extension DialogueViewController: UIStackViewDelegate {
+extension ChatViewController: UIStackViewDelegate {
     func didLayoutSubViews() {
         DispatchQueue.main.async { [unowned self] in
             self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
