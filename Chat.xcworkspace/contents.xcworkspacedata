@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/maciekczarnik/Development/iOS/11.Stanwood/Dialogue/Chat.xcodeproj">
+      location = "group:Chat.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/maciekczarnik/Development/iOS/11.Stanwood/Dialogue/Chat.playground">
+      location = "group:Chat.playground">
    </FileRef>
 </Workspace>
