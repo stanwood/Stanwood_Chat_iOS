@@ -8,7 +8,7 @@
 
 import UIKit
 
-import Chat
+import StanwoodChat
 
 class ChatViewControllerConfiguration {
     weak var viewController: ChatViewController!
