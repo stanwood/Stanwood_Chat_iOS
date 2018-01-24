@@ -49,7 +49,7 @@ class MessageCell: UITableViewCell {
         case right
     }
     
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var textView: BubbleTextView!
     
     @IBOutlet private var leftAlignedLayoutConstraints: [NSLayoutConstraint]!
     @IBOutlet private var rightAlignedLayoutConstraints: [NSLayoutConstraint]!
@@ -68,7 +68,7 @@ class MessageCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        prepare(with: MessageCellViewModel())
+        textView.text = nil
     }
     
     func prepare(with viewModel: MessageCellViewModel) {
@@ -86,12 +86,14 @@ class MessageCell: UITableViewCell {
         case .app:
             textView.backgroundColor = UIColor.red
             alignment = .left
-            applyLeftAlignedStyle(for: ordinalType)
+            textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
         case .user:
             textView.backgroundColor = UIColor.blue
             alignment = .right
-            applyRightAlignedStyle(ordinalType)
+            textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
         }
+        
+        textView.setNeedsLayout()
     }
     
     private func alignLeft() {
@@ -104,66 +106,56 @@ class MessageCell: UITableViewCell {
         contentView.addConstraints(rightAlignedLayoutConstraints)
     }
     
-    private func applyLeftAlignedStyle(for ordinalType: MessageCellViewModel.OrdinalType) {
+    private func leftAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
         switch ordinalType {
         case .standalone:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
-            ]
-            
+            return .allCorners
+
         case .firstInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMinYCorner
+            return [
+                .topLeft,
+                .topRight,
+                .bottomRight
             ]
             
         case .middleInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner
+            return [
+                .topRight,
+                .bottomRight
             ]
             
         case .lastInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner
+            return [
+                .topRight,
+                .bottomLeft,
+                .bottomRight
             ]
         }
     }
     
-    private func applyRightAlignedStyle(_ ordinalType: MessageCellViewModel.OrdinalType) {
+    private func rightAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
         switch ordinalType {
         case .standalone:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
-            ]
-            
+            return .allCorners
+
         case .firstInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner,
-                .layerMaxXMinYCorner
+            return [
+                .topLeft,
+                .topRight,
+                .bottomLeft
             ]
             
         case .middleInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
+            return [
+                .topLeft,
+                .bottomLeft
             ]
-            
+
         case .lastInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner,
-                .layerMaxXMaxYCorner
+            return [
+                .topLeft,
+                .bottomLeft,
+                .bottomRight
             ]
         }
     }
