@@ -11,7 +11,6 @@ A UI component meant primarily to support our chatbots.
   s.author           = { 'Maciek Czarnik' => 'maciek.czarnik@stanwood.io' }
   s.source           = { :git => 'https://github.com/stanwood/Stanwood_Chat_iOS.git', :tag => s.version.to_s }
 
-  s.swift_version = '4.0'
   s.ios.deployment_target = '10.0'
   s.requires_arc = true
   

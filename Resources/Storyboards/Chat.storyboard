@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,27 +13,27 @@
         <!--Delegate-->
         <scene sceneID="8PC-6e-AIE">
             <objects>
-                <viewController id="yDY-mU-lQp" customClass="ChatViewController" customModule="Chat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yDY-mU-lQp" customClass="ChatViewController" customModule="StanwoodChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kbb-Zl-odb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-04-W7x" customClass="UIStackViewCustomizingLayout" customModule="Chat" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MeS-04-W7x" customClass="UIStackViewCustomizingLayout" customModule="StanwoodChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="S8d-vE-ICF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="602"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" id="Otc-Dk-pEW" customClass="MessageCell" customModule="Chat" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" id="Otc-Dk-pEW" customClass="MessageCell" customModule="StanwoodChat" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Otc-Dk-pEW" id="hGs-7g-qQK">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GvD-1c-qjN" customClass="BubbleTextView" customModule="Chat" customModuleProvider="target">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GvD-1c-qjN" customClass="BubbleTextView" customModule="StanwoodChat" customModuleProvider="target">
                                                             <rect key="frame" x="292" y="3" width="68" height="38"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -70,14 +71,14 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJR-ao-YOW">
-                                        <rect key="frame" x="0.0" y="666" width="375" height="1"/>
+                                        <rect key="frame" x="0.0" y="602" width="375" height="1"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="s70-YJ-Jd2"/>
                                         </constraints>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hxQ-lS-lYd">
-                                        <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="603" width="375" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
@@ -97,12 +98,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ffx-cu-rRY" firstAttribute="bottom" secondItem="MeS-04-W7x" secondAttribute="bottom" id="5BU-v7-VMk"/>
-                            <constraint firstItem="Ffx-cu-rRY" firstAttribute="top" secondItem="MeS-04-W7x" secondAttribute="top" constant="20" id="DuS-p1-AOK"/>
+                            <constraint firstItem="Ffx-cu-rRY" firstAttribute="top" secondItem="MeS-04-W7x" secondAttribute="top" id="DuS-p1-AOK"/>
                             <constraint firstItem="Ffx-cu-rRY" firstAttribute="trailing" secondItem="MeS-04-W7x" secondAttribute="trailing" id="k3p-MB-d5s"/>
                             <constraint firstItem="MeS-04-W7x" firstAttribute="leading" secondItem="Ffx-cu-rRY" secondAttribute="leading" id="tXp-v4-fLY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ffx-cu-rRY"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" id="jih-Xo-HV6"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="bottomLayoutConstraint" destination="5BU-v7-VMk" id="naS-JM-lb9"/>
                         <outlet property="tableView" destination="S8d-vE-ICF" id="ROi-6S-ivR"/>
@@ -111,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzI-qx-2n1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.80000000000001" y="-9.4452773613193415"/>
+            <point key="canvasLocation" x="-1009" y="-221"/>
         </scene>
     </scenes>
 </document>
