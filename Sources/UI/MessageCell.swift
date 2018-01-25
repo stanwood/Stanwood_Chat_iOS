@@ -24,22 +24,28 @@ struct MessageCellViewModel {
     let text: String
     let sender: Sender
     let ordinalType: OrdinalType
-    
-    fileprivate init() {
-        text = ""
-        sender = .app
-        ordinalType = .firstInTheSerie
-    }
+    let textColor: UIColor
+    let backgroundColor: UIColor
     
     init(
         text: String,
         sender: Sender,
-        ordinalType: OrdinalType
+        ordinalType: OrdinalType,
+        textColor: UIColor,
+        backgroundColor: UIColor
         ) {
         
         self.text = text
         self.sender = sender
         self.ordinalType = ordinalType
+        self.textColor = textColor
+        self.backgroundColor = backgroundColor
+    }
+}
+
+extension MessageCellViewModel: CustomStringConvertible {
+    var description: String {
+        return "sender: \(sender)\nord: \(ordinalType)"
     }
 }
 
@@ -49,7 +55,7 @@ class MessageCell: UITableViewCell {
         case right
     }
     
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private weak var textView: BubbleTextView!
     
     @IBOutlet private var leftAlignedLayoutConstraints: [NSLayoutConstraint]!
     @IBOutlet private var rightAlignedLayoutConstraints: [NSLayoutConstraint]!
@@ -68,30 +74,30 @@ class MessageCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        prepare(with: MessageCellViewModel())
+        textView.text = nil
+    }
+    
+    override func updateConstraints() {
+        super.updateConstraints()
     }
     
     func prepare(with viewModel: MessageCellViewModel) {
         textView.text = viewModel.text
+        textView.textColor = viewModel.textColor
+        textView.backgroundColor = viewModel.backgroundColor
         
-        adjust(for: viewModel.sender, of: viewModel.ordinalType)
-    }
-    
-    private func adjust(
-        for sender: MessageCellViewModel.Sender,
-        of ordinalType: MessageCellViewModel.OrdinalType
-        ) {
-        
-        switch sender {
+        let ordinalType = viewModel.ordinalType
+        switch viewModel.sender {
         case .app:
-            textView.backgroundColor = UIColor.red
+            textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
             alignment = .left
-            applyLeftAlignedStyle(for: ordinalType)
         case .user:
-            textView.backgroundColor = UIColor.blue
+            textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
             alignment = .right
-            applyRightAlignedStyle(ordinalType)
         }
+        
+        contentView.setNeedsLayout()
+        textView.setNeedsLayout()
     }
     
     private func alignLeft() {
@@ -104,66 +110,56 @@ class MessageCell: UITableViewCell {
         contentView.addConstraints(rightAlignedLayoutConstraints)
     }
     
-    private func applyLeftAlignedStyle(for ordinalType: MessageCellViewModel.OrdinalType) {
+    private func leftAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
         switch ordinalType {
         case .standalone:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
-            ]
-            
+            return .allCorners
+
         case .firstInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMinYCorner
+            return [
+                .topLeft,
+                .topRight,
+                .bottomRight
             ]
             
         case .middleInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner
+            return [
+                .topRight,
+                .bottomRight
             ]
             
         case .lastInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner
+            return [
+                .topRight,
+                .bottomLeft,
+                .bottomRight
             ]
         }
     }
     
-    private func applyRightAlignedStyle(_ ordinalType: MessageCellViewModel.OrdinalType) {
+    private func rightAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
         switch ordinalType {
         case .standalone:
-            textView.layer.maskedCorners = [
-                .layerMaxXMaxYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
-            ]
-            
+            return .allCorners
+
         case .firstInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner,
-                .layerMaxXMinYCorner
+            return [
+                .topLeft,
+                .topRight,
+                .bottomLeft
             ]
             
         case .middleInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner
+            return [
+                .topLeft,
+                .bottomLeft
             ]
-            
+
         case .lastInTheSerie:
-            textView.layer.maskedCorners = [
-                .layerMinXMaxYCorner,
-                .layerMinXMinYCorner,
-                .layerMaxXMaxYCorner
+            return [
+                .topLeft,
+                .bottomLeft,
+                .bottomRight
             ]
         }
     }
