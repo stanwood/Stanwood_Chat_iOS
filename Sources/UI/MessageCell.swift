@@ -9,9 +9,9 @@
 import UIKit
 
 struct MessageCellViewModel {
-    enum Sender {
-        case user
-        case app
+    enum Alignment {
+        case left
+        case right
     }
     
     enum OrdinalType {
@@ -22,45 +22,34 @@ struct MessageCellViewModel {
     }
     
     let text: String
-    let sender: Sender
+    let alignment: Alignment
     let ordinalType: OrdinalType
     let textColor: UIColor
     let backgroundColor: UIColor
     
     init(
         text: String,
-        sender: Sender,
+        alignment: Alignment,
         ordinalType: OrdinalType,
         textColor: UIColor,
         backgroundColor: UIColor
         ) {
         
         self.text = text
-        self.sender = sender
+        self.alignment = alignment
         self.ordinalType = ordinalType
         self.textColor = textColor
         self.backgroundColor = backgroundColor
     }
 }
 
-extension MessageCellViewModel: CustomStringConvertible {
-    var description: String {
-        return "sender: \(sender)\nord: \(ordinalType)"
-    }
-}
-
 class MessageCell: UITableViewCell {
-    enum Alignment {
-        case left
-        case right
-    }
-    
     @IBOutlet private weak var textView: BubbleTextView!
     
     @IBOutlet private var leftAlignedLayoutConstraints: [NSLayoutConstraint]!
     @IBOutlet private var rightAlignedLayoutConstraints: [NSLayoutConstraint]!
     
-    private var alignment: Alignment!
+    private var alignment: MessageCellViewModel.Alignment!
     
     override func layoutSubviews() {
         super.layoutSubviews()

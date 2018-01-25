@@ -53,24 +53,25 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         let message = messages[index]
         
         let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: index)
+        let messageType = message.type
         
         return MessageCellViewModel(
             text: message.text,
-            sender: .sender(for: message),
+            alignment: .alignment(for: messageType),
             ordinalType: ordinalType ?? .standalone,
-            textColor: styleProvider?.textColor(for: message.type) ?? UIColor.white,
-            backgroundColor: styleProvider?.backgroundColor(for: message.type) ?? UIColor.black
+            textColor: styleProvider?.textColor(for: messageType) ?? UIColor.white,
+            backgroundColor: styleProvider?.backgroundColor(for: messageType) ?? UIColor.black
         )
     }
 }
 
-extension MessageCellViewModel.Sender {
-    static func sender(for message: Message) -> MessageCellViewModel.Sender {
-        switch message {
-        case .received(_):
-            return .user
-        case .replied(_):
-            return .app
+extension MessageCellViewModel.Alignment {
+    static func alignment(for messageType: MessageType) -> MessageCellViewModel.Alignment {
+        switch messageType {
+        case .received:
+            return .right
+        case .replied:
+            return .left
         }
     }
 }
