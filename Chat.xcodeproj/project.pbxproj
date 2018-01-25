@@ -26,6 +26,7 @@
 		AE870C272017A44F00BEBF69 /* CALayer+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE870C252017A3B400BEBF69 /* CALayer+Corners.swift */; };
 		AE870C282017A95600BEBF69 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; };
 		AE870C292017A95600BEBF69 /* Chat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AE870D552019F93500BEBF69 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE870D542019F93500BEBF69 /* Message.swift */; };
 		AE8BFA222010F34D00FE3AEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8BFA212010F34D00FE3AEA /* AppDelegate.swift */; };
 		AE8BFA292010F34D00FE3AEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE8BFA282010F34D00FE3AEA /* Assets.xcassets */; };
 		AE8BFA2C2010F34D00FE3AEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE8BFA2A2010F34D00FE3AEA /* LaunchScreen.storyboard */; };
@@ -83,6 +84,7 @@
 		AE870C00201775C100BEBF69 /* Chat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chat.h; sourceTree = "<group>"; };
 		AE870C01201775C100BEBF69 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE870C252017A3B400BEBF69 /* CALayer+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Corners.swift"; sourceTree = "<group>"; };
+		AE870D542019F93500BEBF69 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AE8BFA1F2010F34D00FE3AEA /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE8BFA212010F34D00FE3AEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE8BFA282010F34D00FE3AEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AE870BEC201775C100BEBF69 /* Extensions */,
+				AE870D532019F8FD00BEBF69 /* Model */,
 				AE870BEF201775C100BEBF69 /* Screens */,
 				AE870BE8201775C100BEBF69 /* UI */,
 				AE870BF4201775C100BEBF69 /* Utilities */,
@@ -223,6 +226,14 @@
 				AE870BFF201775C100BEBF69 /* Chat.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		AE870D532019F8FD00BEBF69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE870D542019F93500BEBF69 /* Message.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AE8BFA202010F34D00FE3AEA /* Demo */ = {
@@ -391,6 +402,7 @@
 				AE870C1F201777AD00BEBF69 /* OrdinalTypeRecognizer.swift in Sources */,
 				AE870C1E201777AD00BEBF69 /* KeyboardHandler.swift in Sources */,
 				AE870C19201777A300BEBF69 /* ChatWireframe.swift in Sources */,
+				AE870D552019F93500BEBF69 /* Message.swift in Sources */,
 				AE870C162017779D00BEBF69 /* UIScrollView+VerticallyOffsetable.swift in Sources */,
 				AE870C1C201777A700BEBF69 /* UIStackViewCustomizingLayout.swift in Sources */,
 				AE870C1B201777A700BEBF69 /* MessageCell.swift in Sources */,

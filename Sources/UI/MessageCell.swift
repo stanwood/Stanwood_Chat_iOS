@@ -24,22 +24,28 @@ struct MessageCellViewModel {
     let text: String
     let sender: Sender
     let ordinalType: OrdinalType
-    
-    fileprivate init() {
-        text = ""
-        sender = .app
-        ordinalType = .firstInTheSerie
-    }
+    let textColor: UIColor
+    let backgroundColor: UIColor
     
     init(
         text: String,
         sender: Sender,
-        ordinalType: OrdinalType
+        ordinalType: OrdinalType,
+        textColor: UIColor,
+        backgroundColor: UIColor
         ) {
         
         self.text = text
         self.sender = sender
         self.ordinalType = ordinalType
+        self.textColor = textColor
+        self.backgroundColor = backgroundColor
+    }
+}
+
+extension MessageCellViewModel: CustomStringConvertible {
+    var description: String {
+        return "sender: \(sender)\nord: \(ordinalType)"
     }
 }
 
@@ -71,28 +77,26 @@ class MessageCell: UITableViewCell {
         textView.text = nil
     }
     
-    func prepare(with viewModel: MessageCellViewModel) {
-        textView.text = viewModel.text
-        
-        adjust(for: viewModel.sender, of: viewModel.ordinalType)
+    override func updateConstraints() {
+        super.updateConstraints()
     }
     
-    private func adjust(
-        for sender: MessageCellViewModel.Sender,
-        of ordinalType: MessageCellViewModel.OrdinalType
-        ) {
+    func prepare(with viewModel: MessageCellViewModel) {
+        textView.text = viewModel.text
+        textView.textColor = viewModel.textColor
+        textView.backgroundColor = viewModel.backgroundColor
         
-        switch sender {
+        let ordinalType = viewModel.ordinalType
+        switch viewModel.sender {
         case .app:
-            textView.backgroundColor = UIColor.red
-            alignment = .left
             textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
+            alignment = .left
         case .user:
-            textView.backgroundColor = UIColor.blue
-            alignment = .right
             textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
+            alignment = .right
         }
         
+        contentView.setNeedsLayout()
         textView.setNeedsLayout()
     }
     

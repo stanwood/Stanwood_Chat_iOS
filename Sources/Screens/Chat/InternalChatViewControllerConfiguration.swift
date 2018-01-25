@@ -6,31 +6,26 @@
 //  Copyright © 2018 Stanwood. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-enum Message {
-    case received(String)
-    case replied(String)
-    
-    func isOfTheSameType(as message: Message) -> Bool {
-        switch (self, message) {
-        case (.received(_), .received(_)):
-            fallthrough
-        case (.replied(_), .replied(_)):
-            return true
-        default:
-            return false
-        }
-    }
+public protocol ChatStyleProviding {
+    func textColor(for messageType: MessageType) -> UIColor
+    func backgroundColor(for messageType: MessageType) -> UIColor
 }
 
 internal class InternalChatViewControllerConfiguration {
     private var messages: [Message] = []
     
     private let delegate: ChatViewControllerDelegate?
+    private let styleProvider: ChatStyleProviding?
     
-    init(decorating delegate: ChatViewControllerDelegate? = nil) {
+    init(
+        decorating delegate: ChatViewControllerDelegate? = nil,
+        with styleProvider: ChatStyleProviding? = nil
+        ) {
+        
         self.delegate = delegate
+        self.styleProvider = styleProvider
     }
 }
 
@@ -38,7 +33,7 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
     var penultimateMessageIndex: Int? {
         guard messages.count > 1 else { return nil }
         
-        return messages.count - 1
+        return messages.count - 2
     }
     
     var shouldReloadPenultimateMessage: Bool {
@@ -57,20 +52,14 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
     func messageCellViewModel(at index: Int) -> MessageCellViewModel {
         let message = messages[index]
         
-        var text = ""
-        switch message {
-        case let .received(_text):
-            text = _text
-        case let .replied(_text):
-            text = _text
-        }
-        
         let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: index)
         
         return MessageCellViewModel(
-            text: text,
-            sender: MessageCellViewModel.Sender.sender(for: message),
-            ordinalType: ordinalType ?? .standalone
+            text: message.text,
+            sender: .sender(for: message),
+            ordinalType: ordinalType ?? .standalone,
+            textColor: styleProvider?.textColor(for: message.type) ?? UIColor.white,
+            backgroundColor: styleProvider?.backgroundColor(for: message.type) ?? UIColor.black
         )
     }
 }
@@ -79,9 +68,9 @@ extension MessageCellViewModel.Sender {
     static func sender(for message: Message) -> MessageCellViewModel.Sender {
         switch message {
         case .received(_):
-            return MessageCellViewModel.Sender.user
+            return .user
         case .replied(_):
-            return MessageCellViewModel.Sender.app
+            return .app
         }
     }
 }
