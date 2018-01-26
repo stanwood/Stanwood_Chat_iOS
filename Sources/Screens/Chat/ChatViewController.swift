@@ -20,11 +20,11 @@ internal protocol InternalChatViewControllerDataSource: class {
 }
 
 public protocol ChatViewControllerDelegate: class {
-    func didReceive(_ message: String)
+    func didReceive(_ text: String)
 }
 
 internal protocol InternalChatViewControllerDelegate: ChatViewControllerDelegate {
-    func didReply(with message: String)
+    func didReply(with textContent: TextContent)
 }
 
 public class ChatViewController: UIViewController {
@@ -61,8 +61,8 @@ public class ChatViewController: UIViewController {
         keepingAtTheBottomOffsetCalculator = KeepingAtTheBottomOffsetCalculator(for: tableView)
     }
     
-    public func reply(with message: String) {
-        delegate?.didReply(with: message)
+    public func reply(with text: String) {
+        delegate?.didReply(with: .string(text))
         
         insertNewRow()
         scrollToTheBottom()
@@ -135,7 +135,6 @@ extension ChatViewController: UITableViewDataSource {
         guard let dataSource = dataSource else { return UITableViewCell() }
         
         return dataSource.messageCell(at: indexPath.row, providedForReuseBy: tableView)
-        
     }
 }
 

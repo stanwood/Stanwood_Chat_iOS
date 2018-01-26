@@ -21,21 +21,21 @@ struct MessageCellViewModel {
         case lastInTheSerie
     }
     
-    let text: String
+    let textContent: TextContent
     let alignment: Alignment
     let ordinalType: OrdinalType
     let textColor: UIColor
     let backgroundColor: UIColor
     
     init(
-        text: String,
+        textContent: TextContent,
         alignment: Alignment,
         ordinalType: OrdinalType,
         textColor: UIColor,
         backgroundColor: UIColor
         ) {
         
-        self.text = text
+        self.textContent = textContent
         self.alignment = alignment
         self.ordinalType = ordinalType
         self.textColor = textColor
@@ -66,6 +66,7 @@ class MessageCell: UITableViewCell {
     
     override func prepareForReuse() {
         textView.text = nil
+        textView.attributedText = nil
     }
     
     override func updateConstraints() {
@@ -82,7 +83,10 @@ class MessageCell: UITableViewCell {
         contentView.addConstraints(rightAlignedLayoutConstraints)
     }
     
-    private func leftAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
+    private func leftAlignedRoundedCorners(
+        for ordinalType: MessageCellViewModel.OrdinalType
+        ) -> UIRectCorner {
+        
         switch ordinalType {
         case .standalone:
             return .allCorners
@@ -109,7 +113,10 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func rightAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
+    private func rightAlignedRoundedCorners(
+        for ordinalType: MessageCellViewModel.OrdinalType
+        ) -> UIRectCorner {
+        
         switch ordinalType {
         case .standalone:
             return .allCorners
@@ -139,7 +146,13 @@ class MessageCell: UITableViewCell {
 
 extension MessageCell {
     func prepare(with viewModel: MessageCellViewModel) {
-        textView.text = viewModel.text
+        switch viewModel.textContent {
+        case let .string(text):
+            textView.text = text
+        case let .attributedString(attributedext):
+            textView.attributedText = attributedext
+        }
+        
         textView.textColor = viewModel.textColor
         textView.backgroundColor = viewModel.backgroundColor
         

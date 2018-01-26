@@ -83,7 +83,7 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         
         cell.prepare(
             with: MessageCellViewModel(
-                text: message.text,
+                textContent: message.textContent,
                 alignment: .alignment(for: messageType),
                 ordinalType: ordinalType ?? .standalone,
                 textColor: styleProvider?.textColor(for: messageType) ?? UIColor.white,
@@ -105,15 +105,15 @@ extension MessageCellViewModel.Alignment {
 }
 
 extension InternalChatViewControllerConfiguration: InternalChatViewControllerDelegate {
-    func didReply(with message: String) {
-        add(.replied(message))
+    func didReply(with textContent: TextContent) {
+        add(.replied(textContent))
     }
     
-    func didReceive(_ message: String) {
-        add(.received(message))
+    func didReceive(_ text: String) {
+        add(.received(text))
         
         DispatchQueue.main.async { [weak self] in
-            self?.delegate?.didReceive(message)
+            self?.delegate?.didReceive(text)
         }
     }
     

@@ -14,7 +14,7 @@ public enum MessageType {
 
 enum Message {
     case received(String)
-    case replied(String)
+    case replied(TextContent)
     
     var type: MessageType {
         switch self {
@@ -25,10 +25,10 @@ enum Message {
         }
     }
     
-    var text: String {
+    var textContent: TextContent {
         switch self {
         case let .received(text):
-            return text
+            return .string(text)
         case let .replied(text):
             return text
         }
