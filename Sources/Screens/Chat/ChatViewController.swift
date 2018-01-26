@@ -61,8 +61,8 @@ public class ChatViewController: UIViewController {
         keepingAtTheBottomOffsetCalculator = KeepingAtTheBottomOffsetCalculator(for: tableView)
     }
     
-    public func reply(with text: String) {
-        delegate?.didReply(with: .string(text))
+    public func reply(with textContent: TextContent) {
+        delegate?.didReply(with: textContent)
         
         insertNewRow()
         scrollToTheBottom()

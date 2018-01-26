@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TextContent {
+public enum TextContent {
     case string(String)
     case attributedString(NSAttributedString)
 }
