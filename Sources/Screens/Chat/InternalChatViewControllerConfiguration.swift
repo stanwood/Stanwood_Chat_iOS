@@ -49,18 +49,46 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         return messages.count
     }
     
-    func messageCellViewModel(at index: Int) -> MessageCellViewModel {
+    func messageCell(
+        at index: Int,
+        providedForReuseBy provider: ReusableCellProviding
+        ) -> UITableViewCell {
+        
+        let reusableCell = provider.provideReusableCell(
+            withIdentifier: cellIdentifier(at: index),
+            for: index
+        )
+        
         let message = messages[index]
+        
+        prepareMessageCell(reusableCell, at: index, with: message)
+        
+        return reusableCell
+    }
+    
+    private func cellIdentifier(at index: Int) -> String {
+        return "MessageCell"
+    }
+    
+    private func prepareMessageCell(
+        _ reusableCell: UITableViewCell,
+        at index: Int,
+        with message: Message
+        ) {
+        
+        guard let cell = reusableCell as? MessageCell else { return }
         
         let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: index)
         let messageType = message.type
         
-        return MessageCellViewModel(
-            text: message.text,
-            alignment: .alignment(for: messageType),
-            ordinalType: ordinalType ?? .standalone,
-            textColor: styleProvider?.textColor(for: messageType) ?? UIColor.white,
-            backgroundColor: styleProvider?.backgroundColor(for: messageType) ?? UIColor.black
+        cell.prepare(
+            with: MessageCellViewModel(
+                text: message.text,
+                alignment: .alignment(for: messageType),
+                ordinalType: ordinalType ?? .standalone,
+                textColor: styleProvider?.textColor(for: messageType) ?? UIColor.white,
+                backgroundColor: styleProvider?.backgroundColor(for: messageType) ?? UIColor.black
+            )
         )
     }
 }

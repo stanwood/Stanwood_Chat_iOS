@@ -13,7 +13,10 @@ internal protocol InternalChatViewControllerDataSource: class {
     var shouldReloadPenultimateMessage: Bool { get }
     
     func numberOfMessages() -> Int
-    func messageCellViewModel(at index: Int) -> MessageCellViewModel
+    func messageCell(
+        at index: Int,
+        providedForReuseBy provider: ReusableCellProviding
+        ) -> UITableViewCell
 }
 
 public protocol ChatViewControllerDelegate: class {
@@ -129,14 +132,10 @@ extension ChatViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
         
-        let cell = tableView.dequeue(cellType: MessageCell.self, for: indexPath)
+        guard let dataSource = dataSource else { return UITableViewCell() }
         
-        guard let dataSource = dataSource else { return cell }
+        return dataSource.messageCell(at: indexPath.row, providedForReuseBy: tableView)
         
-        let viewModel = dataSource.messageCellViewModel(at: indexPath.row)
-        cell.prepare(with: viewModel)
-        
-        return cell
     }
 }
 

@@ -49,16 +49,18 @@ class MessageCell: UITableViewCell {
     @IBOutlet private var leftAlignedLayoutConstraints: [NSLayoutConstraint]!
     @IBOutlet private var rightAlignedLayoutConstraints: [NSLayoutConstraint]!
     
-    private var alignment: MessageCellViewModel.Alignment!
+    private var alignment: MessageCellViewModel.Alignment?
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        switch alignment! {
-        case .left:
-            alignLeft()
-        case .right:
-            alignRight()
+        alignment.map {
+            switch $0 {
+            case .left:
+                alignLeft()
+            case .right:
+                alignRight()
+            }
         }
     }
     
@@ -68,25 +70,6 @@ class MessageCell: UITableViewCell {
     
     override func updateConstraints() {
         super.updateConstraints()
-    }
-    
-    func prepare(with viewModel: MessageCellViewModel) {
-        textView.text = viewModel.text
-        textView.textColor = viewModel.textColor
-        textView.backgroundColor = viewModel.backgroundColor
-        
-        let ordinalType = viewModel.ordinalType
-        switch viewModel.sender {
-        case .app:
-            textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
-            alignment = .left
-        case .user:
-            textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
-            alignment = .right
-        }
-        
-        contentView.setNeedsLayout()
-        textView.setNeedsLayout()
     }
     
     private func alignLeft() {
@@ -151,5 +134,28 @@ class MessageCell: UITableViewCell {
                 .bottomRight
             ]
         }
+    }
+}
+
+extension MessageCell {
+    func prepare(with viewModel: MessageCellViewModel) {
+        textView.text = viewModel.text
+        textView.textColor = viewModel.textColor
+        textView.backgroundColor = viewModel.backgroundColor
+        
+        let ordinalType = viewModel.ordinalType
+        alignment = viewModel.alignment
+        
+        alignment.map {
+            switch $0 {
+            case .left:
+                textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
+            case .right:
+                textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
+            }
+        }
+        
+        contentView.setNeedsLayout()
+        textView.setNeedsLayout()
     }
 }
