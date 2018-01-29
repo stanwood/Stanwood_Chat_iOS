@@ -54,20 +54,20 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         providedForReuseBy provider: ReusableCellProviding
         ) -> UITableViewCell {
         
-        let reusableCell = provider.provideReusableCell(
-            withIdentifier: cellIdentifier(at: index),
-            for: index
-        )
-        
         let message = messages[index]
+        let cellType = typeOfCell(at: index)
+        if cellType == MessageCell.self {
+            let reusableCell: MessageCell = provider.provideReusableCell(for: index)
+            prepareMessageCell(reusableCell, at: index, with: message)
+            
+            return reusableCell
+        }
         
-        prepareMessageCell(reusableCell, at: index, with: message)
-        
-        return reusableCell
+        return UITableViewCell()
     }
     
-    private func cellIdentifier(at index: Int) -> String {
-        return "MessageCell"
+    private func typeOfCell(at index: Int) -> UITableViewCell.Type {
+        return MessageCell.self
     }
     
     private func prepareMessageCell(

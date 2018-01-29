@@ -9,20 +9,13 @@
 import UIKit
 
 protocol ReusableCellProviding {
-    func provideReusableCell(
-        withIdentifier identifier: String,
-        for index: Int
-        ) -> UITableViewCell
+    func provideReusableCell<Cell>(for index: Int) -> Cell where Cell: UITableViewCell
 }
 
 extension UITableView: ReusableCellProviding {
-    func provideReusableCell(
-        withIdentifier identifier: String,
-        for index: Int
-        ) -> UITableViewCell {
-        
-        return dequeueReusableCell(
-            withIdentifier: identifier,
+    func provideReusableCell<Cell>(for index: Int) -> Cell where Cell: UITableViewCell {
+        return dequeue(
+            cellType: Cell.self,
             for: IndexPath(row: index, section: 0)
         )
     }
