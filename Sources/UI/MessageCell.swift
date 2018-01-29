@@ -149,11 +149,12 @@ extension MessageCell {
         switch viewModel.textContent {
         case let .string(text):
             textView.text = text
-        case let .attributedString(attributedext):
-            textView.attributedText = attributedext
+        case let .attributedString(attributedText):
+            textView.attributedText = attributedText
         }
         
         textView.textColor = viewModel.textColor
+        textView.tintColor = viewModel.textColor
         textView.backgroundColor = viewModel.backgroundColor
         
         let ordinalType = viewModel.ordinalType
