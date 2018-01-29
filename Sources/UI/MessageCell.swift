@@ -9,9 +9,9 @@
 import UIKit
 
 struct MessageCellViewModel {
-    enum Sender {
-        case user
-        case app
+    enum Alignment {
+        case left
+        case right
     }
     
     enum OrdinalType {
@@ -21,83 +21,56 @@ struct MessageCellViewModel {
         case lastInTheSerie
     }
     
-    let text: String
-    let sender: Sender
+    let textContent: TextContent
+    let alignment: Alignment
     let ordinalType: OrdinalType
     let textColor: UIColor
     let backgroundColor: UIColor
     
     init(
-        text: String,
-        sender: Sender,
+        textContent: TextContent,
+        alignment: Alignment,
         ordinalType: OrdinalType,
         textColor: UIColor,
         backgroundColor: UIColor
         ) {
         
-        self.text = text
-        self.sender = sender
+        self.textContent = textContent
+        self.alignment = alignment
         self.ordinalType = ordinalType
         self.textColor = textColor
         self.backgroundColor = backgroundColor
     }
 }
 
-extension MessageCellViewModel: CustomStringConvertible {
-    var description: String {
-        return "sender: \(sender)\nord: \(ordinalType)"
-    }
-}
-
 class MessageCell: UITableViewCell {
-    enum Alignment {
-        case left
-        case right
-    }
-    
     @IBOutlet private weak var textView: BubbleTextView!
     
     @IBOutlet private var leftAlignedLayoutConstraints: [NSLayoutConstraint]!
     @IBOutlet private var rightAlignedLayoutConstraints: [NSLayoutConstraint]!
     
-    private var alignment: Alignment!
+    private var alignment: MessageCellViewModel.Alignment?
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        switch alignment! {
-        case .left:
-            alignLeft()
-        case .right:
-            alignRight()
+        alignment.map {
+            switch $0 {
+            case .left:
+                alignLeft()
+            case .right:
+                alignRight()
+            }
         }
     }
     
     override func prepareForReuse() {
         textView.text = nil
+        textView.attributedText = nil
     }
     
     override func updateConstraints() {
         super.updateConstraints()
-    }
-    
-    func prepare(with viewModel: MessageCellViewModel) {
-        textView.text = viewModel.text
-        textView.textColor = viewModel.textColor
-        textView.backgroundColor = viewModel.backgroundColor
-        
-        let ordinalType = viewModel.ordinalType
-        switch viewModel.sender {
-        case .app:
-            textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
-            alignment = .left
-        case .user:
-            textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
-            alignment = .right
-        }
-        
-        contentView.setNeedsLayout()
-        textView.setNeedsLayout()
     }
     
     private func alignLeft() {
@@ -110,7 +83,10 @@ class MessageCell: UITableViewCell {
         contentView.addConstraints(rightAlignedLayoutConstraints)
     }
     
-    private func leftAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
+    private func leftAlignedRoundedCorners(
+        for ordinalType: MessageCellViewModel.OrdinalType
+        ) -> UIRectCorner {
+        
         switch ordinalType {
         case .standalone:
             return .allCorners
@@ -137,7 +113,10 @@ class MessageCell: UITableViewCell {
         }
     }
     
-    private func rightAlignedRoundedCorners(for ordinalType: MessageCellViewModel.OrdinalType) -> UIRectCorner {
+    private func rightAlignedRoundedCorners(
+        for ordinalType: MessageCellViewModel.OrdinalType
+        ) -> UIRectCorner {
+        
         switch ordinalType {
         case .standalone:
             return .allCorners
@@ -162,5 +141,35 @@ class MessageCell: UITableViewCell {
                 .bottomRight
             ]
         }
+    }
+}
+
+extension MessageCell {
+    func prepare(with viewModel: MessageCellViewModel) {
+        switch viewModel.textContent {
+        case let .string(text):
+            textView.text = text
+        case let .attributedString(attributedText):
+            textView.attributedText = attributedText
+        }
+        
+        textView.textColor = viewModel.textColor
+        textView.tintColor = viewModel.textColor
+        textView.backgroundColor = viewModel.backgroundColor
+        
+        let ordinalType = viewModel.ordinalType
+        alignment = viewModel.alignment
+        
+        alignment.map {
+            switch $0 {
+            case .left:
+                textView.roundedCorners = leftAlignedRoundedCorners(for: ordinalType)
+            case .right:
+                textView.roundedCorners = rightAlignedRoundedCorners(for: ordinalType)
+            }
+        }
+        
+        contentView.setNeedsLayout()
+        textView.setNeedsLayout()
     }
 }

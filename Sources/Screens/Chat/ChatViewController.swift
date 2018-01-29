@@ -13,15 +13,18 @@ internal protocol InternalChatViewControllerDataSource: class {
     var shouldReloadPenultimateMessage: Bool { get }
     
     func numberOfMessages() -> Int
-    func messageCellViewModel(at index: Int) -> MessageCellViewModel
+    func messageCell(
+        at index: Int,
+        providedForReuseBy provider: ReusableCellProviding
+        ) -> UITableViewCell
 }
 
 public protocol ChatViewControllerDelegate: class {
-    func didReceive(_ message: String)
+    func didReceive(_ text: String)
 }
 
 internal protocol InternalChatViewControllerDelegate: ChatViewControllerDelegate {
-    func didReply(with message: String)
+    func didReply(with textContent: TextContent)
 }
 
 public class ChatViewController: UIViewController {
@@ -58,8 +61,8 @@ public class ChatViewController: UIViewController {
         keepingAtTheBottomOffsetCalculator = KeepingAtTheBottomOffsetCalculator(for: tableView)
     }
     
-    public func reply(with message: String) {
-        delegate?.didReply(with: message)
+    public func reply(with textContent: TextContent) {
+        delegate?.didReply(with: textContent)
         
         insertNewRow()
         scrollToTheBottom()
@@ -129,14 +132,9 @@ extension ChatViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
         
-        let cell = tableView.dequeue(cellType: MessageCell.self, for: indexPath)
+        guard let dataSource = dataSource else { return UITableViewCell() }
         
-        guard let dataSource = dataSource else { return cell }
-        
-        let viewModel = dataSource.messageCellViewModel(at: indexPath.row)
-        cell.prepare(with: viewModel)
-        
-        return cell
+        return dataSource.messageCell(at: indexPath.row, providedForReuseBy: tableView)
     }
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE1B6396201B8F4A00089B93 /* TextContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B6395201B8F4A00089B93 /* TextContent.swift */; };
+		AE1B6398201B921400089B93 /* ReusableCellProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1B6397201B921400089B93 /* ReusableCellProviding.swift */; };
 		AE2697FB2010A029001CCA25 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; };
 		AE870C10201775C100BEBF69 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE870BFC201775C100BEBF69 /* Info.plist */; };
 		AE870C132017779400BEBF69 /* KeepingAtTheBottomOffsetCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE870BFB201775C100BEBF69 /* KeepingAtTheBottomOffsetCalculatorTests.swift */; };
@@ -64,6 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE1B6395201B8F4A00089B93 /* TextContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextContent.swift; sourceTree = "<group>"; };
+		AE1B6397201B921400089B93 /* ReusableCellProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableCellProviding.swift; sourceTree = "<group>"; };
 		AE2697E3200FC1FE001CCA25 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2697F62010A029001CCA25 /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE870BE9201775C100BEBF69 /* BubbleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 		AE870BE7201775C100BEBF69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				AE98C645201A450D000E5725 /* Abstract */,
 				AE870BEC201775C100BEBF69 /* Extensions */,
 				AE870D532019F8FD00BEBF69 /* Model */,
 				AE870BEF201775C100BEBF69 /* Screens */,
@@ -196,6 +201,8 @@
 				AE870BF7201775C100BEBF69 /* KeepingAtTheBottomOffsetCalculator.swift */,
 				AE870BF6201775C100BEBF69 /* KeyboardHandler.swift */,
 				AE870BF5201775C100BEBF69 /* OrdinalTypeRecognizer.swift */,
+				AE1B6395201B8F4A00089B93 /* TextContent.swift */,
+				AE1B6397201B921400089B93 /* ReusableCellProviding.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -393,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE1B6396201B8F4A00089B93 /* TextContent.swift in Sources */,
 				AE870C272017A44F00BEBF69 /* CALayer+Corners.swift in Sources */,
 				AE870C17201777A300BEBF69 /* InternalChatViewControllerConfiguration.swift in Sources */,
 				AE870C1A201777A700BEBF69 /* BubbleTextView.swift in Sources */,
@@ -402,6 +410,7 @@
 				AE870C1F201777AD00BEBF69 /* OrdinalTypeRecognizer.swift in Sources */,
 				AE870C1E201777AD00BEBF69 /* KeyboardHandler.swift in Sources */,
 				AE870C19201777A300BEBF69 /* ChatWireframe.swift in Sources */,
+				AE1B6398201B921400089B93 /* ReusableCellProviding.swift in Sources */,
 				AE870D552019F93500BEBF69 /* Message.swift in Sources */,
 				AE870C162017779D00BEBF69 /* UIScrollView+VerticallyOffsetable.swift in Sources */,
 				AE870C1C201777A700BEBF69 /* UIStackViewCustomizingLayout.swift in Sources */,
