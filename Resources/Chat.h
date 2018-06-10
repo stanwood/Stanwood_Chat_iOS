@@ -3,7 +3,7 @@
 //  Chat
 //
 //  Created by Maciek on 17.01.2018.
-//  Copyright © 2018 Stanwood. All rights reserved.
+//  Copyright © 2018 Stanwood GmbH. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
