@@ -3,7 +3,7 @@
 //  ChatTests
 //
 //  Created by Maciek on 19.01.2018.
-//  Copyright © 2018 Stanwood. All rights reserved.
+//  Copyright © 2018 Stanwood GmbH. All rights reserved.
 //
 
 import XCTest

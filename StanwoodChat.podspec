@@ -1,13 +1,13 @@
 Pod::Spec.new do |s|
   s.name             = 'StanwoodChat'
-  s.version          = '0.0.1'
-  s.summary          = 'StanwoodChat is a UI component meant primarily to support our chatbots'
+  s.version          = '1.0.0'
+  s.summary          = 'StanwoodChat is a UI component intended to support chatbot integrations'
   s.description      = <<-DESC
-A UI component meant primarily to support our chatbots.
+StanwoodChat is a UI component intended to support chatbot integrations.
                        DESC
 
   s.homepage         = 'https://github.com/stanwood/Stanwood_Chat_iOS'
-  s.license          = { :type => 'Private', :file => 'LICENSE' }
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Maciek Czarnik' => 'maciek.czarnik@stanwood.io' }
   s.source           = { :git => 'https://github.com/stanwood/Stanwood_Chat_iOS.git', :tag => s.version.to_s }
 
