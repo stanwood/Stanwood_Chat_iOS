@@ -122,8 +122,8 @@ public class ChatViewController: UIViewController {
         guard let dataSource = dataSource else { return }
         guard dataSource.numberOfMessages() > 0 else { return }
         
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.scrollToRow(
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.scrollToRow(
                 at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
                 at: UITableViewScrollPosition.bottom,
                 animated: true
