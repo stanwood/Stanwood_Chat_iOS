@@ -69,9 +69,9 @@ public class ChatViewController: UIViewController {
         
         keyboardHandler = KeyboardHandler(
             withBottomConstraint: bottomLayoutConstraint,
-            andAnimations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+            andAnimations: { [weak self] in
+                self?.view.layoutIfNeeded()
+                self?.tableView.contentOffset = self?.keepingAtTheBottomOffsetCalculator.calculate()
             }
         )
         
@@ -100,8 +100,8 @@ public class ChatViewController: UIViewController {
         guard dataSource.shouldReloadPenultimateMessage else { return }
         guard let penultimateRowIndex = dataSource.penultimateMessageIndex else { return }
         
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.reloadRows(
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadRows(
                 at: [IndexPath(row: penultimateRowIndex, section: 0)],
                 with: UITableViewRowAnimation.fade
             )
@@ -125,8 +125,8 @@ public class ChatViewController: UIViewController {
         guard dataSource.numberOfMessages() > 0 else { return }
         
         let lastRowIndex = dataSource.numberOfMessages() - 1
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.scrollToRow(
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.scrollToRow(
                 at: IndexPath(row: lastRowIndex, section: 0),
                 at: UITableViewScrollPosition.bottom,
                 animated: true
