@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'StanwoodChat'
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'StanwoodChat is a UI component intended to support chatbot integrations'
   s.description      = <<-DESC
 StanwoodChat is a UI component intended to support chatbot integrations.
