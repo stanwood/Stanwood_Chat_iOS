@@ -23,31 +23,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-import Foundation
+import UIKit
 
-enum Message {
-    case received(String)
-    case replied(String)
-    
-    func isOfTheSameType(as message: Message) -> Bool {
-        switch (self, message) {
-        case (.received(_), .received(_)):
-            fallthrough
-        case (.replied(_), .replied(_)):
-            return true
-        default:
-            return false
-        }
-    }
+public protocol ChatStyleProviding {
+    func textColor(for messageType: MessageType) -> UIColor
+    func backgroundColor(for messageType: MessageType) -> UIColor
 }
 
 internal class InternalChatViewControllerConfiguration {
     private var messages: [Message] = []
     
     private let delegate: ChatViewControllerDelegate?
+    private let styleProvider: ChatStyleProviding?
     
-    init(decorating delegate: ChatViewControllerDelegate? = nil) {
+    init(
+        decorating delegate: ChatViewControllerDelegate? = nil,
+        with styleProvider: ChatStyleProviding? = nil
+        ) {
+        
         self.delegate = delegate
+        self.styleProvider = styleProvider
     }
 }
 
@@ -55,7 +50,7 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
     var penultimateMessageIndex: Int? {
         guard messages.count > 1 else { return nil }
         
-        return messages.count - 1
+        return messages.count - 2
     }
     
     var shouldReloadPenultimateMessage: Bool {
@@ -63,7 +58,7 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         
         let lastMessage = messages.last!
         let penultimateMessage = messages[penultimateMessageIndex]
-
+        
         return lastMessage.isOfTheSameType(as: penultimateMessage)
     }
     
@@ -71,48 +66,71 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         return messages.count
     }
     
-    func messageCellViewModel(at index: Int) -> MessageCellViewModel {
-        let message = messages[index]
+    func messageCell(
+        at index: Int,
+        providedForReuseBy provider: ReusableCellProviding
+        ) -> UITableViewCell {
         
-        var text = ""
-        switch message {
-        case let .received(_text):
-            text = _text
-        case let .replied(_text):
-            text = _text
+        let message = messages[index]
+        let cellType = typeOfCell(at: index)
+        if cellType == MessageCell.self {
+            let reusableCell: MessageCell = provider.provideReusableCell(for: index)
+            prepareMessageCell(reusableCell, at: index, with: message)
+            
+            return reusableCell
         }
         
-        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: index)
+        return UITableViewCell()
+    }
+    
+    private func typeOfCell(at index: Int) -> UITableViewCell.Type {
+        return MessageCell.self
+    }
+    
+    private func prepareMessageCell(
+        _ reusableCell: UITableViewCell,
+        at index: Int,
+        with message: Message
+        ) {
         
-        return MessageCellViewModel(
-            text: text,
-            sender: MessageCellViewModel.Sender.sender(for: message),
-            ordinalType: ordinalType ?? .standalone
+        guard let cell = reusableCell as? MessageCell else { return }
+        
+        let ordinalType = OrdinalTypeRecognizer(for: messages).ordinalTypeForMesage(at: index)
+        let messageType = message.type
+        
+        cell.prepare(
+            with: MessageCellViewModel(
+                textContent: message.textContent,
+                alignment: .alignment(for: messageType),
+                ordinalType: ordinalType ?? .standalone,
+                textColor: styleProvider?.textColor(for: messageType) ?? UIColor.white,
+                backgroundColor: styleProvider?.backgroundColor(for: messageType) ?? UIColor.black
+            )
         )
     }
 }
 
-extension MessageCellViewModel.Sender {
-    static func sender(for message: Message) -> MessageCellViewModel.Sender {
-        switch message {
-        case .received(_):
-            return MessageCellViewModel.Sender.user
-        case .replied(_):
-            return MessageCellViewModel.Sender.app
+extension MessageCellViewModel.Alignment {
+    static func alignment(for messageType: MessageType) -> MessageCellViewModel.Alignment {
+        switch messageType {
+        case .received:
+            return .right
+        case .replied:
+            return .left
         }
     }
 }
 
 extension InternalChatViewControllerConfiguration: InternalChatViewControllerDelegate {
-    func didReply(with message: String) {
-        add(.replied(message))
+    func didReply(with textContent: TextContent) {
+        add(.replied(textContent))
     }
     
-    func didReceive(_ message: String) {
-        add(.received(message))
+    func didReceive(_ text: String) {
+        add(.received(text))
         
         DispatchQueue.main.async { [weak self] in
-            self?.delegate?.didReceive(message)
+            self?.delegate?.didReceive(text)
         }
     }
     
