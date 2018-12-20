@@ -1,9 +1,8 @@
 //
 //  Message.swift
-//  Demo
+//  StanwoodChat
 //
-//  Created by Eugène Peschard on 20/12/2018.
-//  Copyright © 2018 Stanwood. All rights reserved.
+//  Created by Maciek on 25.01.2018.
 //
 
 import Foundation

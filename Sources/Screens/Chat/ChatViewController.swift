@@ -30,15 +30,18 @@ internal protocol InternalChatViewControllerDataSource: class {
     var shouldReloadPenultimateMessage: Bool { get }
     
     func numberOfMessages() -> Int
-    func messageCellViewModel(at index: Int) -> MessageCellViewModel
+    func messageCell(
+        at index: Int,
+        providedForReuseBy provider: ReusableCellProviding
+        ) -> UITableViewCell
 }
 
 public protocol ChatViewControllerDelegate: class {
-    func didReceive(_ message: String)
+    func didReceive(_ text: String)
 }
 
 internal protocol InternalChatViewControllerDelegate: ChatViewControllerDelegate {
-    func didReply(with message: String)
+    func didReply(with textContent: TextContent)
 }
 
 public class ChatViewController: UIViewController {
@@ -66,17 +69,17 @@ public class ChatViewController: UIViewController {
         
         keyboardHandler = KeyboardHandler(
             withBottomConstraint: bottomLayoutConstraint,
-            andAnimations: { [unowned self] in
-                self.view.layoutIfNeeded()
-                self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+            andAnimations: { [weak self] in
+                self?.view.layoutIfNeeded()
+                self?.tableView.contentOffset = self?.keepingAtTheBottomOffsetCalculator.calculate()
             }
         )
         
         keepingAtTheBottomOffsetCalculator = KeepingAtTheBottomOffsetCalculator(for: tableView)
     }
     
-    public func reply(with message: String) {
-        delegate?.didReply(with: message)
+    public func reply(with textContent: TextContent) {
+        delegate?.didReply(with: textContent)
         
         insertNewRow()
         scrollToTheBottom()
@@ -85,8 +88,8 @@ public class ChatViewController: UIViewController {
     private func send(_ message: String) {
         delegate?.didReceive(message)
         
-        reloadPenultimateRowIfNeeded()
         insertNewRow()
+        reloadPenultimateRowIfNeeded()
         scrollToTheBottom()
         
         textView.text = nil
@@ -95,24 +98,25 @@ public class ChatViewController: UIViewController {
     private func reloadPenultimateRowIfNeeded() {
         guard let dataSource = dataSource else { return }
         guard dataSource.shouldReloadPenultimateMessage else { return }
+        guard let penultimateRowIndex = dataSource.penultimateMessageIndex else { return }
         
-        if let penultimateMessageIndex = dataSource.penultimateMessageIndex {
-            DispatchQueue.main.async { [unowned self] in
-                self.tableView.reloadRows(
-                    at: [IndexPath(row: penultimateMessageIndex, section: 0)],
-                    with: UITableViewRowAnimation.fade
-                )
-            }
-            
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadRows(
+                at: [IndexPath(row: penultimateRowIndex, section: 0)],
+                with: UITableViewRowAnimation.fade
+            )
         }
     }
     
     private func insertNewRow() {
         guard let dataSource = dataSource else { return }
         
+        
+        let insertedRowIndex = dataSource.numberOfMessages() == 0 ? 0 : dataSource.numberOfMessages() - 1
+        
         tableView.beginUpdates()
         tableView.insertRows(
-            at: [IndexPath(row: dataSource.numberOfMessages() - 1, section: 0)],
+            at: [IndexPath(row: insertedRowIndex, section: 0)],
             with: .fade
         )
         tableView.endUpdates()
@@ -122,9 +126,10 @@ public class ChatViewController: UIViewController {
         guard let dataSource = dataSource else { return }
         guard dataSource.numberOfMessages() > 0 else { return }
         
+        let lastRowIndex = dataSource.numberOfMessages() - 1
         DispatchQueue.main.async { [weak self] in
             self?.tableView.scrollToRow(
-                at: IndexPath(row: dataSource.numberOfMessages() - 1, section: 0),
+                at: IndexPath(row: lastRowIndex, section: 0),
                 at: UITableViewScrollPosition.bottom,
                 animated: true
             )
@@ -146,13 +151,9 @@ extension ChatViewController: UITableViewDataSource {
         cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
         
-        let cell = tableView.dequeue(cellType: MessageCell.self, for: indexPath)
+        guard let dataSource = dataSource else { return UITableViewCell() }
         
-        guard let dataSource = dataSource else { return cell }
-        
-        cell.prepare(with: dataSource.messageCellViewModel(at: indexPath.row))
-        
-        return cell
+        return dataSource.messageCell(at: indexPath.row, providedForReuseBy: tableView)
     }
 }
 
@@ -177,8 +178,8 @@ extension ChatViewController: UITextViewDelegate {
 
 extension ChatViewController: UIStackViewDelegate {
     func didLayoutSubViews() {
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.contentOffset = self?.keepingAtTheBottomOffsetCalculator.calculate() ?? <#default value#>
         }
     }
 }

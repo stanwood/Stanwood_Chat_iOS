@@ -27,8 +27,15 @@ import UIKit
 
 @IBDesignable
 class BubbleTextView: UITextView {
+    var roundedCorners: UIRectCorner = .allCorners
+    
     override func awakeFromNib() {
-        layer.cornerRadius = 10
         layer.masksToBounds = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.layer.roundCorners(corners: roundedCorners, radius: 10)
     }
 }

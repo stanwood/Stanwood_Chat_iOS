@@ -8,7 +8,7 @@ class ChatViewControllerConfiguration {
 
 extension ChatViewControllerConfiguration: ChatViewControllerDelegate {
     func didReceive(_ message: String) {
-        viewController.reply(with: "Thx for your message: \(message)")
+        viewController.reply(with: .string("Thx for your message: \(message)"))
     }
 }
 
