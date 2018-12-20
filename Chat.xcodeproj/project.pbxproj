@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C7F580321CBCDEC0043B3F5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F580221CBCDEC0043B3F5 /* Message.swift */; };
 		A2D1744F5F13BC1F5B5AFE10 /* Pods_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C30D22F76BE038C9047EBA80 /* Pods_Demo.framework */; };
 		AE2697FB2010A029001CCA25 /* Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2697E3200FC1FE001CCA25 /* Chat.framework */; };
 		AE870C10201775C100BEBF69 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE870BFC201775C100BEBF69 /* Info.plist */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		41476AFC887C14D7AB3222A1 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
+		9C7F580221CBCDEC0043B3F5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		AE2697E3200FC1FE001CCA25 /* Chat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE2697F62010A029001CCA25 /* ChatTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChatTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE870BE9201775C100BEBF69 /* BubbleTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleTextView.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				AE870BF3201775C100BEBF69 /* InternalChatViewControllerConfiguration.swift */,
 				AE870BF2201775C100BEBF69 /* ChatViewController.swift */,
 				AE870BF1201775C100BEBF69 /* ChatWireframe.swift */,
+				9C7F580221CBCDEC0043B3F5 /* Message.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -446,6 +449,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE8BFA222010F34D00FE3AEA /* AppDelegate.swift in Sources */,
+				9C7F580321CBCDEC0043B3F5 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

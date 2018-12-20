@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'StanwoodChat'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'StanwoodChat is a UI component intended to support chatbot integrations'
   s.description      = <<-DESC
 StanwoodChat is a UI component intended to support chatbot integrations.
@@ -13,7 +13,7 @@ StanwoodChat is a UI component intended to support chatbot integrations.
 
   s.ios.deployment_target = '11.0' # maskedCorners is iOS 11...
   s.requires_arc = true
-  
+
   s.source_files = 'Sources/**/*.swift'
   s.resources =  ['Resources/Storyboards/*.storyboard']
 end
