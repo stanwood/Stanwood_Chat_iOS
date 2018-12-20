@@ -111,7 +111,9 @@ public class ChatViewController: UIViewController {
     private func insertNewRow() {
         guard let dataSource = dataSource else { return }
         
-        let insertedRowIndex = dataSource.numberOfMessages() - 1
+        
+        let insertedRowIndex = dataSource.numberOfMessages() == 0 ? 0 : dataSource.numberOfMessages() - 1
+        
         tableView.beginUpdates()
         tableView.insertRows(
             at: [IndexPath(row: insertedRowIndex, section: 0)],
