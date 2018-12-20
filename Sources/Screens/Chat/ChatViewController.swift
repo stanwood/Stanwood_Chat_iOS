@@ -159,8 +159,8 @@ extension ChatViewController: UITextViewDelegate {
 
 extension ChatViewController: UIStackViewDelegate {
     func didLayoutSubViews() {
-        DispatchQueue.main.async { [unowned self] in
-            self.tableView.contentOffset = self.keepingAtTheBottomOffsetCalculator.calculate()
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.contentOffset = self?.keepingAtTheBottomOffsetCalculator.calculate() ?? <#default value#>
         }
     }
 }
