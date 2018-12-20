@@ -71,7 +71,9 @@ public class ChatViewController: UIViewController {
             withBottomConstraint: bottomLayoutConstraint,
             andAnimations: { [weak self] in
                 self?.view.layoutIfNeeded()
-                self?.tableView.contentOffset = self?.keepingAtTheBottomOffsetCalculator.calculate()
+                if let offset = self?.keepingAtTheBottomOffsetCalculator.calculate() {
+                    self?.tableView.contentOffset = offset
+                }
             }
         )
         
