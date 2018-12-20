@@ -58,7 +58,7 @@ extension InternalChatViewControllerConfiguration: InternalChatViewControllerDat
         
         let lastMessage = messages.last!
         let penultimateMessage = messages[penultimateMessageIndex]
-
+        
         return lastMessage.isOfTheSameType(as: penultimateMessage)
     }
     
