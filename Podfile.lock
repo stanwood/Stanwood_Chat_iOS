@@ -1,5 +1,5 @@
 PODS:
-  - StanwoodChat (0.0.3)
+  - StanwoodChat (1.0.2)
 
 DEPENDENCIES:
   - StanwoodChat
@@ -9,7 +9,7 @@ SPEC REPOS:
     - StanwoodChat
 
 SPEC CHECKSUMS:
-  StanwoodChat: c575a2bdf4b4f563e7d9409b9120651b872a29f1
+  StanwoodChat: 1c58f8679bf6fd95c16f20426bd4915bfe89bcec
 
 PODFILE CHECKSUM: 77a13369b3c5b95b127bb4cff4f59f7d0b7906ea
 
