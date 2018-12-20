@@ -6,7 +6,6 @@
 //  Copyright © 2018 Stanwood. All rights reserved.
 //
 
-TextContent.swift
 
 import Foundation
 
