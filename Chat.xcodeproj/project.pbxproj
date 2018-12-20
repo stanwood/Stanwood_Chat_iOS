@@ -147,7 +147,6 @@
 		AE870BE7201775C100BEBF69 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				AE98C645201A450D000E5725 /* Abstract */,
 				AE870BEC201775C100BEBF69 /* Extensions */,
 				AE870D532019F8FD00BEBF69 /* Model */,
 				AE870BEF201775C100BEBF69 /* Screens */,
